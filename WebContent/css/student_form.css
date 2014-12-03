@@ -1,0 +1,127 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+div.view {
+	margin: 20px;
+	background-color:#336666;
+	height:450px;
+}
+form.imgform{
+	float:left;
+	width:40%;
+}
+div.stu_img_right{
+	position:relative;
+	left:60px;
+	top:40px;
+}
+div.stu_img_right>p{
+	margin-left:30px;
+	margin-bottom:10px;
+}
+div.stu_img_right>img{
+	width:5.4cm;
+	height:7.6cm;
+}
+form.imgform>div.stu_img_right>input[type="file"]{
+	width:55%;
+	font-size:13px;
+}
+form.imgform>div.stu_img_right>input[type="button"]{
+	margin-left:5px;
+	font-size:13px;
+}
+form.imgform>div.stu_img_right>input{
+	margin-top:10px;
+	background-color:#003366;
+	border-style:none;
+	outline:2px solid #FFFFFF;
+	color:#FFFFFF;
+}
+form.client_form{
+	float:right;
+	width:50%;
+	margin-left:10%;
+	position:relative;
+	right:60px;
+	top:60px;
+}
+div.view label {
+	font-size: 13px;
+	font-family: "微软雅黑";
+	color: #FFFFFF;
+	letter-spacing: 0.3em;
+	line-height: 100%;
+	margin-left: 5px;
+}
+
+div.view form select, div.view form select option {
+	text-align: center;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	width: 14em;
+}
+
+div.view form select option {
+	width: 12em;
+}
+
+div.view form  input {
+	font-size: 15px;
+	font-family: "微软雅黑";
+}
+
+div.view form input[type="text"] {
+	width: 175px;
+}
+
+.client_form {
+	width: 90%;
+	margin: 0 auto;	
+	
+}
+
+table.form_table {
+	border-spacing: 0.5em;
+	margin-left: 10%;
+	margin-bottom: 5%;
+}
+
+tr#class {
+	display:auto;
+}
+
+table.form_table tr th {
+	font-weight: lighter;
+	text-align: right;
+	padding-right: 5px;
+}
+
+
+
+div#submitName {
+	width: 100%;
+	height: 50px;
+	margin-top: 30px;
+	position:relative;
+	bottom:15px;
+	left:40px;
+}
+
+div#submitName input {
+	width: 60px;
+	margin: 10px 0;
+	background-color:#003366;
+	border-style:none;
+	outline:2px solid #FFFFFF;
+	color:#FFFFFF;
+	font-size:13px;
+}
+
+div#submitName input[type="reset"] {
+	margin-left: 30%;
+	margin-right: 45px;
+}
+
+div#ui-datepicker-div {
+	font-size: 7.7pt;
+}

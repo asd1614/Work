@@ -1,0 +1,102 @@
+@charset "GBK";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+	color: #FFFFFF;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+body{
+	background-color:#1ab9fb;
+	}
+div.top {
+	background-color:#336666;
+	width:810px;
+	height:110px;
+	margin:2% auto 0;
+	}
+div.top p{
+	font-size:40px;
+	text-align:center;
+	padding-top:30px;
+	}
+div.content{
+    width:810px;
+	height:400px;
+	margin:10px auto 0;
+	}
+div.content p{
+	font-size:20px;
+	text-align:center;
+	padding-top:20px;
+	}
+div.content_left,div.content_right{
+	background-color:#669999;
+	width:400px;
+	height:400px;
+	float:left;
+	}
+div.content_right{
+	background-color:#0e76bd;
+	margin-left:10px;
+	}
+div.login{
+	width:250px;
+	margin: 2% auto 0;
+}
+div.login  label.name,label.pwd{
+	display:block;
+	margin:4% 0 4%;
+	font-size:15px;
+}
+div.login input[type="text"],input[type="password"] {
+	color:#000000;
+	width:200px;
+	height:30px;
+	font-size:100%;
+	background-color:#b8d7ec;
+	border-style:none;
+	padding-left:5%;
+}
+input[type="password"]{
+	margin-bottom:10px;
+}
+div.login img{
+	width:95px;
+	height:40px;
+	margin-top:10px;
+	
+}
+div.login input[class="test"]{
+	width:60px;
+	height:30px;
+	margin-right:10px;
+	margin-left:0px;
+	position:relative;
+	top:-10px;
+}
+div.login input[type="submit"], input[type="reset"]{
+	background-color:#003366;
+	border-style:none;
+	outline:5px solid #FFFFFF;
+	width:70px;
+	height:25px;
+	font-size:15px;
+	letter-spacing:10px;
+	padding-left:10px;
+	margin-right:10px;
+	margin-top:20px;
+	margin-left:5px;
+	position:relative;
+	
+}
+
+label.type_label{
+	font-size:15px;
+}
+div.bottom{
+	background-color:#336666;
+	width:810px;
+	height:70px;
+	margin:10px auto 0;
+	}

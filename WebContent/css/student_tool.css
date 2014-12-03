@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+div.leftTool * {
+/*	background-color: #FFFFFF;*/
+	
+}
+
+div.stu_img_left>img {
+	margin-left: 20%;
+	margin-top: 10%;
+	margin-bottom: 10px;
+}
+
+div.stu_img_left {
+	background-color: #1ab9fb;
+}
+div.user_message{
+	background-color:#FFFFFF;
+}
+div.user_message table {
+	font: normal 12px "微软雅黑";
+	color:#336666;
+	width: 100%;
+	padding-bottom: 5px;
+	margin-bottom:10px;
+}
+
+div.user_message table tr.login>td {
+	text-align: center;
+	padding-top: 7px;
+}
+div.menu {
+	padding-bottom: 20px;
+	background-color:#1ab9fb;
+}
+div.menu>ul {
+	list-style-type: none;
+	margin-top: 10px;	
+}
+
+div.menu>ul>li {	
+/*	border-bottom: 2px solid #4affff;*/
+}
+div.menu>ul>li>a{
+	background-color:#008aff;
+	width:190px;
+	height:35px;
+	display:block;
+/*	text-align:center;*/
+}
+div.menu>ul>li>a>span {
+	font: normal 15px "微软雅黑";	
+	letter-spacing:0.2em;
+	color:#FFFFFF;
+	position:relative;
+	top:5px;
+	left:55px;
+}
+
+div.menu>ul>li>ul {
+	
+	margin-left:30px;
+	list-style-type: none;
+	display: none;
+}
+div.menu>ul>li>ul>li{
+	
+}
+div.menu>ul>li>ul>li>a{
+	background-color:#009999;
+	width:auto;
+	height:35px;
+	display:block;
+/*	text-align:center;*/
+	color:#FFFFFF;
+}
+div.menu>ul>li>ul>li>a>span{
+	position:relative;
+	top:5px;
+	left:40px;
+	font: normal 13px "微软雅黑";
+}
+div.menu a {
+	text-decoration: none;
+}
+
