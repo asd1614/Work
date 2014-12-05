@@ -1,0 +1,81 @@
+<link href="../css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+<script src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../js/jquery.ui.datepicker-zh-CN.min.js"></script>
+<script>
+	\$(document).ready(function(){
+		\$('select#xib').change(function(){
+			if(\$(this).val()!=' ')
+				\$('tr#class').show();
+			else
+				\$('tr#class').hide();
+		});
+		\$('input#birth').datepicker({
+            changeYear: true,
+			yearRange:'c-30:c+10'
+		});
+	});
+</script>
+<div class="view">
+	<p>个人资料</p>
+	<form action="" class="client_form" id="check_form" name="client_form" method="post">
+		<table class="form_table">	
+			<tr>
+				<th><label>学号</label></th>
+				<td><input type="text" name="studentId" value="$!{studnet.studentId}"/></td>		
+			</tr>
+			<tr>
+				<th><label>姓名</label></th>
+				<td><input type="text" name="name" value="$!{studnet.name}"/></td>
+			</tr>			
+			<tr>
+				<th><label>身份证号码</label></th>
+				<td><input type="text" name="idCard" value="$!{studnet.idCard}"/></td>		
+			<tr>
+				<th><label>性别</label></th>
+				<td>
+					<input type="radio" name="sex" value="男" #if($!{studnet.sex}=="男") checked #end/><label>男</label>
+					<input type="radio" name="sex" value="女" #if($!{studnet.sex}=="女") checked #end/><label>女</label>
+				</td>
+			</tr>
+			<tr>
+				<th><label>出生日期</label></th>
+				<td><input type="text" name="birthday" id="birth"/></td>
+			</tr>
+			<tr>
+				<th><label>系别</label></th>
+				<td><select name="dapartment" id="xib">
+						<option value=" " >---请选择系别---</option>
+						<option value="中文系">中文系</option>
+						<option value="政治与法律系">政治与法律系</option>
+						<option value="外语系">外语系</option>
+						<option value="经济管理系">经济管理系</option>
+						<option value="物理与电信工程系">物理与电信工程系</option>
+						<option value="化学与生命科学系">化学与生命科学系</option>
+						<option value="数学与计算机信息工程系">数学与计算机信息工程系</option>
+						<option value="艺术系">艺术系</option>
+						<option value="体育系">体育系</option>
+						<option value="教育科学系">教育科学系</option>
+						<option value="商学院">商学院</option>			
+					</select>
+				</td>
+			</tr>
+			<tr id="class">
+				<th><label>班级</label></th>
+				<td><select name="stuClass">
+						<option value="null">---请选择班别---</option>
+					</select>
+				</td>
+			</tr>	
+		</table>
+		<div class="stu_img_right">
+			<p>蓝色背景一寸证件照</p>
+			<img src="../images/${imgUrl}" width="200" height="300"/><br/>	
+			<input type="file" name="view_file" value="浏览"/>
+			<input type="button" name="upload_file" value="上传"/>
+		</div>
+		<div id="submitName">
+			<input type="reset" value="重置"/>
+			<input type="submit" value="提交"/>
+		</div>
+	</form>
+</div>

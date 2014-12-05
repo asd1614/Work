@@ -1,0 +1,41 @@
+<!DOCTYPE HTML >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>百色学院报名系统</title>
+<link href="css/index_css.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+	<div class="top">
+    	<p>百色学院英语四六级报名系统</p>
+    </div>
+    <div class="content">
+    	<div class="content_left">
+    		<p>公告</p>
+        <div class="note"></div>
+    	</div>
+    	<div class="content_right">
+    		<p>登陆</p>
+            <div class="login">
+            	<form action="StudentServlet" class="login_form" method="post">
+                	<label class="name">用户账号</label>
+            		<input class="name" type="text"name="name"/>
+            		<label class="pwd" >密码</label>
+            		<input class="pwd" type="password"name="pwd"/><br/>
+            		<input id="stu" type="radio" name="type" checked="checked"/>
+            		<label for="stu" class="type_label">学生</label> 
+            		<input id="admin" type="radio" name="type"  />
+            		<label for="admin" class="type_label">管理员</label> <br/>
+					<input class="test" type="text" />
+					<img src="images/check_img.png" id="img_test"/><br/>
+					<input class="bottom1" type="reset" name="reset" value="重置"/>
+            		<input class="bottom1" type="submit" name="submit" value="登陆"/>
+                </form>
+            </div>
+    	</div>
+    </div>
+    <div class="bottom"></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@charset "GBK";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+
+body {
+	background-color: #99CCFF;
+	color:#FFFFFF;
+}
+
+a {
+	outline: none;
+}
+
+div {
+	
+}
+
+div#main {
+	width: 960px;
+	margin: 0 auto;
+	background-color: #1ab9fb;
+	box-shadow: 3px 10px 15px black;
+}
+
+div#head_left {
+	width: 530px;
+	height: 70px;
+	float: left;
+	background-color: #1ab9fb;
+}
+
+div#head_right {
+	width: 427px;
+	height: 70px;
+	float: left;
+	background-color: #1ab9fb;
+}
+
+div#tool_left {
+	width: 190px;
+	height: auto;
+	float: left;
+}
+
+div#content_right {
+	width: 750px;
+	height: auto;
+	padding-bottom: 10px;
+	background-color: #336666;
+	float: left;
+	margin-left:10px;
+	margin-r:10px;
+}
+
+div#bottom {
+	width: 960px;
+	height: 70px;
+	clear: both;
+	position: relative;
+	top: 0px;
+	background-color: #1ab9fb;
+}

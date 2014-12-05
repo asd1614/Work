@@ -1,0 +1,38 @@
+@charset "UTF-8";
+div.alter>p{
+	margin-left:20px;
+	margin-top:20px;
+	margin-bottom:20px;
+}div.alter{
+	width:750px;
+	height:550px;
+}
+form#mm{
+	border:3px #FFFFFF solid;
+	width:350px;
+	height:250px;
+	margin-left:80px;
+	margin-top:40px;
+	padding-left:40px;
+	padding-top:60px;
+}
+form#mm>label[for="new"],label[for="pass"]{
+	padding-left:1em;
+}
+form#mm>label{
+	padding-right:0.6em;
+}
+form#mm>input{
+	margin-bottom:20px;
+}
+input[type="reset"],input[type="submit"]{
+	border:3px #FFFFFF solid;
+	background-color:#008AFF;
+	width:60px;
+	color:#FFFFFF;
+	
+}
+input[type="reset"]{
+	margin-left:6em;
+	margin-right:1em;
+}

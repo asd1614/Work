@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/student_Tool.css" rel="stylesheet" type="text/css" />
+<script src="../js/jQuery.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/jquery.validate.messages_zh.js"></script>
+<style type="text/css">
+* {
+	font-family: Verdana;
+	font-size: 96%;
+}
+
+label {
+	width: 10em;
+	float: left;
+}
+
+label.error {
+	float: none;
+	color: red;
+	padding-left: 0.5em;
+	vertical-align: top:
+}
+
+p {
+	clear: both;
+}
+
+.submit {
+	margin-left: 12em;
+}
+
+em {
+	font-weight: bold;
+	padding-right: 1em;
+	vertical-align: top;
+}
+</style>
+<script>
+$(document).ready(function(){
+	$('#commentForm').validate({
+		rules:{
+			username:{required:true,minlength:2},
+			email:{required:true,email:true},
+			url:"url",
+			comment:"required"
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<form class="cmxform" id="commentForm" method="get" action="#">
+		<fieldset>
+			<legend>一个简单的验证带验证提示的评论例子</legend>
+			<table>
+				<tr>
+					<td><label>姓名</label><em>*</em></td>
+					<td><input id="cusername" name="username" size="25" /></td>
+				</tr>
+				<tr>
+					<td><label for="cemail">电子邮件</label><em>*</em></td>
+					<td><input id="cemail" name="email" size="25" /></td>
+				</tr>
+				<tr>
+					<td><label for="curl">网址</label><em>&nbsp;</em></td>
+					<td><input id="curl" name="email" size="25" value="" /></td>
+				</tr>
+				<tr>
+					<td><label for="ccomment">你的评论</label><em>*</em></td>
+					<td><textarea id="ccomment" name="comment" size="22"></textarea></td>
+				</tr>
+				<p>
+					<input class="submit" type="submit" value="提交" />
+				</p>
+			</table>
+		</fieldset>
+</body>
+</html>

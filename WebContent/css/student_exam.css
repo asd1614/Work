@@ -1,0 +1,32 @@
+@charset "UTF-8";
+div.exam{
+	
+	height:550px;
+}
+div.exam>p{
+	margin-left:20px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+div.exam>pre{
+	margin:0 auto 0;
+	padding-top:15px;
+	line-height:25pt;
+	border:3px #FFFFFF solid;
+	width:600px;
+	text-align:center;
+}
+
+input{
+	border-style:none;
+	color:#FFFFFF;
+	background-color:#008aff;
+	font-size:20px;
+	width:250px;
+	height:60px;
+	position:relative;
+	top:25px;
+	left:115px;
+	margin-right:20px;
+	border:7px #FFFFFF solid;
+}
