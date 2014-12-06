@@ -107,11 +107,13 @@ div#submitName {
 	left:40px;
 }
 p#message{
-	color:red;
+	color: #FFFF66;
 	position: relative;
-	left: 160px;
+	left: 165px;
 	bottom: 7px;
-	display:none;
+	display: none;
+	font-size: 13px;
+	font-weight: bold;
 }
 div#submitName input {
 	width: 60px;

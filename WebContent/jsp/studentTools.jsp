@@ -35,19 +35,19 @@ $(document).ready(function(){
 		<table>
 			<tr>
 				<th>用户名：</th>
-				<td><%=stu.getSname() %></td>
+				<td id="td_name"><%=stu.getSname() %></td>
 			</tr>
 			<tr>
 				<th>学&emsp;号：</th>
-				<td><%=stu.getSno() %></td>
+				<td id="td_sno"><%=stu.getSno() %></td>
 			</tr>
 			<tr>
 				<th>班&emsp;别：</th>
-				<td><%=stu.getCname() %></td>
+				<td id="td_cname"><%=stu.getCname() %></td>
 			</tr>
 			<tr>
 				<th>系&emsp;别：</th>
-				<td><%=stu.getCdepat() %></td>
+				<td id="td_xib"><%=stu.getCdepat() %></td>
 			</tr>
 		</table>
 	</div>

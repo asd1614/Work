@@ -1,6 +1,7 @@
 package cn.bsexam.dao.action;
 import java.sql.Connection;
 
+import cn.bsexam.vo.ShowStu;
 import cn.bsexam.vo.Student;
 import cn.bsexam.dao.interf.*;
 import cn.bsexam.dao.impl.*;
@@ -20,5 +21,13 @@ public class SUpdateAction {
 				flag = dao_s.updateOne(s);
 			}
 		return flag;
+	}
+	public static ShowStu refreshStu(String sno){
+		DBC dbc = new DatabaseConnectionODBC();
+		Connection conn = dbc.getConnection();
+		IShowStu dao_stu = new ShowStuImpl();
+		dao_stu.setConnection(conn);
+		ShowStu stu = dao_stu.findShowStu(sno);
+		return stu ;
 	}
 }

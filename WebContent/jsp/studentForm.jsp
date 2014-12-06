@@ -47,12 +47,22 @@
 					},
 					function(data){
 						$('#message').text(data);
+						$('#formsubimt').val('提交');
 						}
 					);
 		}
+		function refresh_Tool(){
+			$('#td_name').text($('[name="name"]').val());
+			$('#td_sno').text($('[name="sno"]').val());
+			$('#td_cname').text($('[name="stuClass"]').val());
+		}
 		$('#check_form').submit(function(){
+			$('#formsubimt').attr("disabled","disabled");
+			$('#formsubimt').val('保存中');
 			formSubmit();
 			$('#message').show();
+			refresh_Tool();
+			$('#formsubimt').removeAttr('disabled');
 			return false;	
 		});
 	});
@@ -118,7 +128,7 @@
 		<div id="submitName">
 			<p id="message"></p>
 			<input type="reset" value="重置"/>
-			<input type="submit" value="提交"/>
+			<input type="submit" id="formsubimt" value="提交"/>
 		</div>
 	</form>
 	

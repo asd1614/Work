@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.bsexam.vo.ShowStu;
 import cn.bsexam.vo.Student;
 import cn.bsexam.dao.action.*;
 import cn.bsexam.check.StudentCheck;
+
 /**
  * Servlet implementation class SInsertServlet
  */
@@ -40,7 +42,10 @@ public class SUpdateServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Student s = StudentCheck.getStudent(request);
 		response.setContentType("text/html;charset=GB18030");
-		if(SUpdateAction.update(s)){			
+		if(SUpdateAction.update(s)){
+			ShowStu stu = SUpdateAction.refreshStu(s.getSno());
+			HttpSession session = request.getSession();
+			session.setAttribute("stu", stu);
 			PrintWriter out = response.getWriter();
 			out.println("±£´æ³É¹¦");
 			out.close();
