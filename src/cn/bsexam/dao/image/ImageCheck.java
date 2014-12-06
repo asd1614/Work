@@ -1,5 +1,5 @@
 package cn.bsexam.dao.image;
-import com.jspsmart.upload.*;
+import cn.bsexam.dao.upload.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
