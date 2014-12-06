@@ -25,8 +25,36 @@
 					function(data){$('select#cname').html(data);}
 					);
 		}
-		refresh_class("SJ");
+		$('div.view').one('mouseenter',function(){
+			var d = $('#xib').val();
+			refresh_class(d);
+		});
+		$('select#xib').change(
+			function(){
+				var d = $('#xib').val();
+				refresh_class(d);
+			}
+		);
 		$('input#datepicker').datepicker();
+		function formSubmit(){
+			$.post(
+					'<%="http://"+request.getHeader("host")+"/Work//SUpdateServlet"%>',
+					{
+						name: $('[name="name"]').val(),
+						idCard:$('[name="idCard"]').val(),
+						sex:$('[name="sex"]').val(),
+						stuClass:$('[name="stuClass"]').val(),
+					},
+					function(data){
+						$('#message').text(data);
+						}
+					);
+		}
+		$('#check_form').submit(function(){
+			formSubmit();
+			$('#message').show();
+			return false;	
+		});
 	});
 </script>
 <div class="view">
@@ -43,7 +71,7 @@
 		<table class="form_table">	
 			<tr>
 				<th><label>学号</label></th>
-				<td><input type="text" name="studentId" value="<%=s.getSno()%>"/></td>		
+				<td><input type="text" name="studentId" value="<%=s.getSno()%>" disabled="disabled"/></td>		
 			</tr>
 			<tr>
 				<th><label>姓名</label></th>
@@ -64,11 +92,14 @@
 				<th><label>出生日期</label></th>
 				<%
 					String idCard = s.getSid();
-					char id[]=idCard.toCharArray();
 					String date ="";
-					date+=String.copyValueOf(id, 6, 4)+"-";
-					date+=String.copyValueOf(id, 10, 2)+"-";
-					date+=String.copyValueOf(id, 12, 2);
+					if(!idCard.equals(date)){
+						char id[]=idCard.toCharArray();						
+						date+=String.copyValueOf(id, 6, 4)+"-";
+						date+=String.copyValueOf(id, 10, 2)+"-";
+						date+=String.copyValueOf(id, 12, 2);
+					}
+											
 				%>
 				<td><input type="text" name="birthday" id="datepicker"
 					value="<%=date==null?"":date%>"></td>
@@ -85,6 +116,7 @@
 			</tr>	
 		</table>
 		<div id="submitName">
+			<p id="message"></p>
 			<input type="reset" value="重置"/>
 			<input type="submit" value="提交"/>
 		</div>

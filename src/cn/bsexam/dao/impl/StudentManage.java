@@ -15,7 +15,7 @@ public class StudentManage implements IStudent {
 	private String SQL_VIEW = "SELECT sno,sname,ssex,sid,cname FROM student WHERE sno=? ;";
 	private String SQL_VIEW_L = "SELECT sno,sname,ssex,sid,cname FROM student OREDER BY sno;";
 	private String SQL_INSERT = "INSERT INTO student(sno,sname,ssex,sid,cname) VALUES (?,?,?,?,?);";
-	private String SQL_UPDATE = "UPDATE student SET sname=?,ssex=?,sid=?,cname=? WHERE sno=? ; ";
+	private String SQL_UPDATE = "UPDATE student SET sname=?, ssex=?, sid=?, cname=? WHERE sno=? ;";
 	//private String SQL_DELETE = "DELETE FROM studetn WHERE sno =? ;";
 	public void setConnection(Connection conn){
 		this.conn = conn;

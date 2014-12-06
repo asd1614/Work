@@ -52,4 +52,14 @@
     <servlet-name>QueryList</servlet-name>
     <url-pattern>/QueryList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SUpdateServlet</display-name>
+    <servlet-name>SUpdateServlet</servlet-name>
+    <servlet-class>cn.bsexam.servlet.SUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SUpdateServlet</servlet-name>
+    <url-pattern>/SUpdateServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

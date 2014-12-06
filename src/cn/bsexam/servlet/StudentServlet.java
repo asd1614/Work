@@ -44,6 +44,8 @@ public class StudentServlet extends HttpServlet {
 		//如果成功返回一个ShowStu对象，则认为用户验证正确
 		if(stu!=null){
 			Student s = LoginAction.getStudent(sno);	//提取学生简略信息	
+			if(s==null)
+				s = new Student();
 			HttpSession session = request.getSession();
 			session.setAttribute("s", s);
 			session.setAttribute("stu", stu);

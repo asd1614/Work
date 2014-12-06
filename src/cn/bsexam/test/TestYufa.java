@@ -4,13 +4,8 @@ public class TestYufa {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		java.util.List<cn.bsexam.vo.ClassView> list = 
-			cn.bsexam.dao.action.ShowTool.getClist("HS");
-		int i = 0;
-		while(i<list.size()){
-			System.out.println(list.get(i).getCdepat()+"--"+list.get(i).getCname());
-			i++;
-		}
+		String[] parameter = {"name","idCard","sex","birthday","dapartment","stuClass"};
+		System.out.println(parameter.length);
 	}
 
 }
