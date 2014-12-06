@@ -5,6 +5,13 @@
 <title>百色学院报名系统</title>
 <link href="css/index_css.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.1.js"></script>
+<script>
+$(document).ready(function(){
+	/*$('#img_test').click(function(){
+		document.getElementById("authImg").src = "AuthCodeServlet?"+Math.random();
+	});*/
+});
+</script>
 </head>
 
 <body>
@@ -28,8 +35,10 @@
             		<label for="stu" class="type_label">学生</label> 
             		<input id="admin" type="radio" name="type"  />
             		<label for="admin" class="type_label">管理员</label> <br/>
-					<input class="test" type="text" />
-					<img src="images/check_img.png" id="img_test"/><br/>
+					<input class="test" type="text" name="authCode"/>
+					<img src="AuthCodeServlet" id="img_test" onclick="this.src=this.src+'?'+ Math.random()"/>
+					<label id="auth">*验证码错误</label>
+					<br/>
 					<input class="bottom1" type="reset" name="reset" value="重置"/>
             		<input class="bottom1" type="submit" name="submit" value="登陆"/>
                 </form>

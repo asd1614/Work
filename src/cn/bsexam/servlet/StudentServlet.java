@@ -1,11 +1,15 @@
 package cn.bsexam.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import cn.bsexam.dao.action.LoginAction;
 import cn.bsexam.vo.*;
 /**
@@ -36,26 +40,35 @@ public class StudentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		boolean flag =false;
-		SUser suser = new SUser();
-		String sno = request.getParameter("name");
-		suser.setSno(sno);
-		suser.setPassword(request.getParameter("pwd"));
-		ShowStu stu = LoginAction.getShowStu(suser);
-		//如果成功返回一个ShowStu对象，则认为用户验证正确
-		if(stu!=null){
-			Student s = LoginAction.getStudent(sno);	//提取学生简略信息	
-			if(s==null)
-				s = new Student();
-			HttpSession session = request.getSession();
-			session.setAttribute("s", s);
-			session.setAttribute("stu", stu);
-			session.setAttribute("sessionId",session.getId());
-			flag = true;
+		HttpSession session = request.getSession();
+		String authCode = (String) session.getAttribute("authCode");
+		if(request.getParameter("authCode").equals(authCode)){
+			SUser suser = new SUser();
+			String sno = request.getParameter("name");
+			suser.setSno(sno);
+			suser.setPassword(request.getParameter("pwd"));
+			ShowStu stu = LoginAction.getShowStu(suser);
+			//如果成功返回一个ShowStu对象，则认为用户验证正确
+			if(stu!=null){
+				Student s = LoginAction.getStudent(sno);	//提取学生简略信息	
+				if(s==null)
+					s = new Student();
+				session.setAttribute("s", s);
+				session.setAttribute("stu", stu);
+				session.setAttribute("sessionId",session.getId());
+				flag = true;
+			}
+			if(flag==true){
+				response.sendRedirect(request.getContextPath()+WardURL);
+			}else
+				response.sendRedirect(request.getContextPath()+Redirect);	
+		}else{
+			HashMap map = new HashMap();
+			map.put("authCode", "验证码错误");
+			session.setAttribute("map", map);
+			response.sendRedirect(request.getContextPath()+Redirect);
 		}
-		if(flag==true){
-			response.sendRedirect(request.getContextPath()+WardURL);
-		}else
-			;//response.sendRedirect(request.getContextPath()+Redirect);		
+			
 	}
 
 }

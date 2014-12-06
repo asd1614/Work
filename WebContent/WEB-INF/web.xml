@@ -62,4 +62,14 @@
     <servlet-name>SUpdateServlet</servlet-name>
     <url-pattern>/SUpdateServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AuthCodeServlet</display-name>
+    <servlet-name>AuthCodeServlet</servlet-name>
+    <servlet-class>cn.bsexam.servlet.AuthCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthCodeServlet</servlet-name>
+    <url-pattern>/AuthCodeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
