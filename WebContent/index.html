@@ -4,12 +4,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>百色学院报名系统</title>
 <link href="css/index_css.css" rel="stylesheet" type="text/css" />
+<link href="js/qtip/jquery.qtip.min.css" rel="stylesheet" type="text/css"/>
 <script src="js/jquery-1.11.1.js"></script>
+<script src="js/qtip/imagesloaded.pkg.min.js"></script>
+<script src="js/qtip/jquery.qtip.js"></script>
+
 <script>
 $(document).ready(function(){
-	/*$('#img_test').click(function(){
-		document.getElementById("authImg").src = "AuthCodeServlet?"+Math.random();
-	});*/
+	function getCode(){
+		$.ajax({url: 'AuthCodeServlet?'+$('.test').val(),
+    		cache:false,
+    		type:"POST", 
+    		data: {authCode:$('.test').val()},
+    		success: function(data){
+    	       $('#qtip-0-content').text(data);
+    	      }
+    	})
+	}
+	$('.test').bind("blur mouseout",function(){
+		getCode();		
+	});
+	$('.test').qtip({
+	    content:{
+	    	text:' '
+	    },
+		position:{
+			my:'left center',
+			at:'right center',
+			target:$('#img_test')
+		},
+	    show: {
+	    	event:'blur mouseout'
+	    },
+	    hide:{
+	    	event:"focus"
+	    },
+	    style: {
+	    	classes:'qtip-rounded'
+	    }
+	});
 });
 </script>
 </head>
@@ -37,7 +70,7 @@ $(document).ready(function(){
             		<label for="admin" class="type_label">管理员</label> <br/>
 					<input class="test" type="text" name="authCode"/>
 					<img src="AuthCodeServlet" id="img_test" onclick="this.src=this.src+'?'+ Math.random()"/>
-					<label id="auth">*验证码错误</label>
+					<label id="auth"></label>
 					<br/>
 					<input class="bottom1" type="reset" name="reset" value="重置"/>
             		<input class="bottom1" type="submit" name="submit" value="登陆"/>

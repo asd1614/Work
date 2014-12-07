@@ -1,6 +1,7 @@
 package cn.bsexam.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -45,6 +46,17 @@ public class AuthCodeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=GB18030");
+		PrintWriter out = response.getWriter();
+		String authCode = (String) request.getSession().getAttribute("authCode");
+		String str = request.getParameter("authCode");
+		if(authCode.equals(str)){
+			out.print("正确");
+			out.close();
+		}else{
+			out.print("验证码错误");
+			out.close();
+		}
 	}
 
 }
