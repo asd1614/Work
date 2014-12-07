@@ -72,4 +72,24 @@
     <servlet-name>AuthCodeServlet</servlet-name>
     <url-pattern>/AuthCodeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletUpload</display-name>
+    <servlet-name>ServletUpload</servlet-name>
+    <servlet-class>cn.bsexam.dao.upload.ServletUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletUpload</servlet-name>
+    <url-pattern>/ServletUpload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageUploadServlet</display-name>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <servlet-class>cn.bsexam.servlet.ImageUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <url-pattern>/ImageUploadServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

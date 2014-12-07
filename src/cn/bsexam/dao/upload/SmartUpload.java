@@ -74,10 +74,10 @@ public class SmartUpload {
 		m_response = httpservletresponse;
 	}
 
-	public final void initialize(ServletConfig servletconfig,
+	public final void initialize(ServletContext servletContext,
 			HttpServletRequest httpservletrequest,
 			HttpServletResponse httpservletresponse) throws ServletException {
-		m_application = servletconfig.getServletContext();
+		m_application = servletContext;
 		m_request = httpservletrequest;
 		m_response = httpservletresponse;
 	}

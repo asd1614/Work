@@ -195,7 +195,7 @@ public class SmartFile {
 		m_fieldname = s;
 	}
 
-	protected void setFileName(String s) {
+	public void setFileName(String s) {
 		m_filename = s;
 	}
 

@@ -115,6 +115,15 @@ p#message{
 	font-size: 13px;
 	font-weight: bold;
 }
+p#img_message{
+	color: #FF6;
+	position: relative;
+	left: 40px;
+	top: 15px;
+	font-size: 13px;
+	font-weight: bold;
+	display: none;
+}
 div#submitName input {
 	width: 60px;
 	margin: 10px 0;

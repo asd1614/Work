@@ -59,15 +59,17 @@ public class ServletUpload extends HttpServlet {
 
 		try {
 			// Initialization
-			mySmartUpload.initialize(config, request, response);
+			mySmartUpload.initialize(config.getServletContext(), request, response);
 
 			// Upload
 			mySmartUpload.upload();
 
 			// Save the file with the original name
 			// in a virtual path of the web server
-			count = mySmartUpload.save(mySmartUpload.getRequest().getParameter(
-					"PATH"));
+			SmartFiles files = mySmartUpload.getFiles();
+			SmartFile file = files.getFile(0);
+			file.setFileName("123456.jpg");
+			count = mySmartUpload.save(null);
 
 			// Display the result
 			out.println(count + " file uploaded.");
