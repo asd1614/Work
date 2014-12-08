@@ -3,11 +3,32 @@
 <head>
 <meta charset="GBK">
 <title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.upload.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('#imagefile').upload({
+        action: "../ImageUploadServlet", //上传地址
+        fileName: "file",    //文件名称。用于后台接收
+        params: {},         //参数
+        accept: ".jpg,.png",     //文件类型
+        complete: function (data) {  //上传完成
+            $('#message').text('123'+data);
+        },
+        submit: function (e) {   //提交之前
+           	e.preventDefault();
+        }
+    });
+});
+</script>
 </head>
 <body>
-<form action="../ImageUploadServlet" method="post" enctype="multipart/form-data">
-	<input type="file" name="pic"><br>
-	<input type="submit" value="submit">
+<form action="../ImageUploadServlet" method="post" id="imagefile" enctype="multipart/form-data">
+	<input type="file" name="pic" id="file1"><br>
+	<input type="submit" value="submit" id="submitbutton">
 </form>
+<p id="message"></p>
 </body>
 </html>

@@ -84,6 +84,7 @@
 			$('#upload_file').attr("disabled","disabled");
 			$('#upload_file').val('保存中');
 			submitImage();
+			alert("you cannot see me");
 			$('#img_message').show();
 			$('#upload_file').removeAttr('disabled');
 			return false;	
@@ -92,7 +93,7 @@
 </script>
 <div class="view">
 	<p>个人资料</p>
-	<form action="ImageUploadServlet" class="imgform" name="img_form" method="post" >
+	<form action="../ImageUploadServlet" class="imgform" name="img_form" method="post" >
 		<div class="stu_img_right">
 			<p>蓝色背景一寸证件照</p>
 			<img src="../images/img.jpg"><br/>	
