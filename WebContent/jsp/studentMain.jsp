@@ -14,11 +14,8 @@
 <link href="../css/student_tool.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery-1.11.1.js"></script>
 <script src="../js/datepickter.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
-<script src="../js/jquery.validate.messages_zh.js"></script>
-<script src="WebContent/js/vendor/jquery.ui.widget.js"></script>
-<script src="WebContent/js/jquery.fileupload.js"></script>
-<script src="WebContent/js/jquery.iframe-transport.js"></script>
+<script src="../js/ajaxfileupload.js"></script>
+
 <script>
 $(document).ready(function(){
 	$('div#tool_left').load("studentTools.jsp");

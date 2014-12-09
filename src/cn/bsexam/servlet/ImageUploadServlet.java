@@ -1,5 +1,6 @@
 package cn.bsexam.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -39,7 +40,7 @@ public class ImageUploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-//		ShowStu stu = (ShowStu) session.getAttribute("stu");
+		ShowStu stu = (ShowStu) session.getAttribute("stu");
 		response.setContentType("text/html;charset=GB18030");
 		PrintWriter out = response.getWriter();
 		SmartUpload dao_upload = new SmartUpload();
@@ -48,8 +49,8 @@ public class ImageUploadServlet extends HttpServlet {
 			dao_upload.upload();
 			SmartFiles files = dao_upload.getFiles();
 			SmartFile file = files.getFile(0);
-//			String filename = "images/"+stu.getCdepat()+stu.getSno()+file.getFileExt();
-//			file.setFileName(filename);
+			String filename = File.separator+"images"+File.separator+stu.getCdepat()+File.separator+stu.getSno()+"."+file.getFileExt();
+			file.setFileName(filename);
 			dao_upload.save(null);
 			out.print("上传成功");
 		}catch(Exception e){

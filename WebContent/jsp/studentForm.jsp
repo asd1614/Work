@@ -65,29 +65,17 @@
 			$('#formsubimt').removeAttr('disabled');
 			return false;	
 		});
-		function submitImage(){
-			$.upload({
-				// 上传地址
-				url: '<%="http://"+request.getHeader("host")+"/Work/ImageUploadServlet"%>', 
-				// 文件域名字
-				fileName: 'view_file', 
-				// 上传完成后, 返回json, text
+		$('#upload_button').click(function(){
+			$.ajaxFileUpload({
+				url:'../ImageUploadServlet',
+				type:'POST',
+				fileElementId:'image_file',
 				dataType: 'text',
-				// 上传之前回调,return true表示可继续上传
-				onComplate: function(data) {
-						$('img_message').text(data);
-						$('#upload_file').val('上传');
+				success:function(data){
+					$('#img_message').text(data);
+					$('#img_message').show();
 				}
 			});
-		}
-		$('.imgform').submit(function(){
-			$('#upload_file').attr("disabled","disabled");
-			$('#upload_file').val('保存中');
-			submitImage();
-			alert("you cannot see me");
-			$('#img_message').show();
-			$('#upload_file').removeAttr('disabled');
-			return false;	
 		});
 	});
 </script>
@@ -98,7 +86,7 @@
 			<p>蓝色背景一寸证件照</p>
 			<img src="../images/img.jpg"><br/>	
 			<input type="file" name="view_file" value="浏览" id="image_file"/>
-			<input type="submit" name="upload_file" value="上传" id="upload_file"/>
+			<input type="button" name="upload_file" value="上传" id="upload_button"/>
 			<p id="img_message"></p>
 		</div>		
 	</form>
