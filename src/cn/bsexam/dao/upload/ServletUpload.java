@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import cn.bsexam.dao.image.ImageCheck;
 
 //import com.jspsmart.upload.SmartUpload;
 
@@ -69,8 +70,13 @@ public class ServletUpload extends HttpServlet {
 			SmartFiles files = mySmartUpload.getFiles();
 			SmartFile file = files.getFile(0);
 			file.setFileName("123456.jpg");
+			boolean flag[] = ImageCheck.imageCheck(file, file.getImage());
 			count = mySmartUpload.save(null);
-
+			for(int i=0;i<flag.length;i++){
+				out.println("<p>");
+				out.println(flag[i]);
+				out.println("</p>");
+			}
 			// Display the result
 			out.println(count + " file uploaded.");
 
@@ -78,7 +84,7 @@ public class ServletUpload extends HttpServlet {
 			out.println("Unable to upload the file.<br>");
 			out.println("Error : " + e.toString());
 		}
-
+		
 		out.println("</BODY>");
 		out.println("</HTML>");
 	}

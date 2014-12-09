@@ -19,7 +19,8 @@ public class ImageCheck {
 	private static float B_MAX = 100F;					/*图片的背景色HSB的值域*/
 	
 	public static boolean[] imageCheck(SmartFile file,BufferedImage image) {
-		boolean[] flag = new boolean[7] ;				/*判断结果记录数组:0-type,1-size,2-width,3-height,4-H,5-S,6-B*/
+		/*判断结果记录数组:0-type,1-size,2-width,3-height,4-H,5-S,6-B*/
+		boolean[] flag = new boolean[7] ;				
 		for(int i=0;i<7;i++){
 			flag[i]	= true;
 		}

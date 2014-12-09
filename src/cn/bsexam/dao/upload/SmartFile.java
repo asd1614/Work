@@ -1,4 +1,6 @@
 package cn.bsexam.dao.upload;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,6 +25,8 @@ public class SmartFile {
 	private String m_subTypeMime;
 	// private String m_contentString;
 	private boolean m_isMissing;
+	//create BufferedImage 
+	private BufferedImage image;
 	public static final int SAVEAS_AUTO = 0;
 	public static final int SAVEAS_VIRTUAL = 1;
 	public static final int SAVEAS_PHYSICAL = 2;
@@ -232,6 +236,17 @@ public class SmartFile {
 			return m_parent.m_binArray[m_startData + i];
 		} else {
 			return 0;
+		}
+	}
+	public BufferedImage getImage(){
+		try {
+			return ImageIO.read(new ByteArrayInputStream(
+					m_parent.m_binArray, 
+					m_startData, 
+					m_size));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return null;
 		}
 	}
 }

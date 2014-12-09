@@ -8,7 +8,11 @@ public class TestYufa {
 		HashMap  map = new HashMap();
 		String s = "a";
 		map.put(s, parameter[1]);
-		System.out.println(map.get("a"));
+		boolean flag[] = {true,true,true,true};
+		int i = 0 ;
+		boolean f = flag[i++]&&flag[i++]&&flag[i++]&&flag[i++];
+		System.out.println(i);
+		System.out.println(f);
 	}
 
 }
