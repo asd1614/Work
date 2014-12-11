@@ -84,7 +84,7 @@
 	<form action="../ImageUploadServlet" class="imgform" name="img_form" method="post" >
 		<div class="stu_img_right">
 			<p>蓝色背景一寸证件照</p>
-			<img src="../images/img.jpg"><br/>	
+			<img src="../ImageSendServlet" onclick="this.src=this.src+'?'+ Math.random()"><br/>	
 			<input type="file" name="view_file" value="浏览" id="image_file"/>
 			<input type="button" name="upload_file" value="上传" id="upload_button"/>
 			<p id="img_message"></p>

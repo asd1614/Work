@@ -1,25 +1,30 @@
 package cn.bsexam.servlet;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.*;
+
+import cn.bsexam.dao.image.AuthCode;
+import cn.bsexam.vo.ShowStu;
+import cn.bsexam.vo.Student;
 
 /**
- * Servlet implementation class testservlet
+ * Servlet implementation class ImageSendServlet
  */
-public class testservlet extends HttpServlet {
+public class ImageSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public testservlet() {
+    public ImageSendServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +35,28 @@ public class testservlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//RealPath = 
-		//%Project Path%\Work\
-		response.setContentType("text/html;charset=GB18030");
-		PrintWriter out = response.getWriter();
-		String path  = request.getParameter("PATH");
+				//%Project Path%\Work\
 		HttpSession session = request.getSession();
-		ServletContext context = session.getServletContext();
-		String contextpath = context.getRealPath("/");
-		out.println("<p>"+path+"</p>");
-		out.println("<p>"+contextpath+"</p>");
-		out.println("<p>"+request.getServletPath()+"</p>");
-		out.close();
+		Student s = (Student)session.getAttribute("s");
+		ShowStu stu = (ShowStu)session.getAttribute("stu");
+		String RealPath = session.getServletContext().getRealPath("/");
+		if(s.getImage_f()){
+			String path = RealPath+"images"+File.separator+stu.getCdepat()+File.separator+stu.getSno();
+			File file = new File(path+".jpg");
+			if(!file.exists()){
+				file = new File(path+"jpeg");
+			}
+			if(!file.exists()){
+				file = new File(RealPath+"images"+File.separator+"img.jpg");
+			}
+			BufferedImage image = ImageIO.read(file);
+			try {
+				//·¢ËÍÍ¼Æ¬
+				ImageIO.write(image, "JPEG", response.getOutputStream());
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**

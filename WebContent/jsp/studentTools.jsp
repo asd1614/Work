@@ -29,7 +29,7 @@ $(document).ready(function(){
 </script>
 <div class="left_Tool">
 	<div class="stu_img_left">
-		<img src="../images/img.jpg" width="100" height="150" />
+		<img src="../ImageSendServlet" onclick="this.src=this.src+'?'+ Math.random()" width="100" height="150" />
 	</div>
 	<div class="user_message">
 		<table>

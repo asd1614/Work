@@ -12,10 +12,11 @@ import cn.bsexam.vo.Student;
 
 public class StudentManage implements IStudent {
 	private Connection conn = null;
-	private String SQL_VIEW = "SELECT sno,sname,ssex,sid,cname FROM student WHERE sno=? ;";
+	private String SQL_VIEW = "SELECT sno,sname,ssex,sid,cname,image_f FROM student WHERE sno=? ;";
 	private String SQL_VIEW_L = "SELECT sno,sname,ssex,sid,cname FROM student OREDER BY sno;";
 	private String SQL_INSERT = "INSERT INTO student(sno,sname,ssex,sid,cname) VALUES (?,?,?,?,?);";
 	private String SQL_UPDATE = "UPDATE student SET sname=?, ssex=?, sid=?, cname=? WHERE sno=? ;";
+	private String SQL_UPDATE_Image_f ="UPDATE student SET image_f=? WHERE sno=? ;";
 	//private String SQL_DELETE = "DELETE FROM studetn WHERE sno =? ;";
 	public void setConnection(Connection conn){
 		this.conn = conn;
@@ -34,6 +35,7 @@ public class StudentManage implements IStudent {
 					e.setSsex(re.getString(3));					
 					e.setSid(re.getString(4));					
 					e.setCname(re.getString(5));
+					e.setImage_f(re.getBoolean(6));
 				}
 			} catch (SQLException e1) {
 				// TODO 自动生成的 catch 块
@@ -111,5 +113,22 @@ public class StudentManage implements IStudent {
 		}
 		return flag;
 	}
-
+	public boolean updateImage(Student e) {
+		// TODO 自动生成的方法存根
+		boolean flag=false;
+		if(!e.getImage_f()){
+			try {
+				PreparedStatement pstat = this.conn.prepareStatement(SQL_UPDATE_Image_f);
+				pstat.setString(2, e.getSno());
+				pstat.setBoolean(1, true);
+				int i = pstat.executeUpdate();
+				if(i==1)
+					flag = true;
+			} catch (SQLException e1) {
+				// TODO 自动生成的 catch 块
+				e1.printStackTrace();
+			}
+		}
+		return flag;
+	}
 }

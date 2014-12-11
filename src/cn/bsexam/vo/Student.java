@@ -6,6 +6,7 @@ public class Student{
 	private String sid;
 	private String IDNO;
 	private String cname;
+	private boolean image_f;
 	public String getSno() {
 		return sno;
 	}
@@ -42,4 +43,11 @@ public class Student{
 	public void setCname(String cname) {
 		this.cname = cname==null?"":cname;
 	}
+	public boolean getImage_f() {
+		return image_f;
+	}
+	public void setImage_f(boolean image_f) {
+		this.image_f = image_f;
+	}
+	
 }

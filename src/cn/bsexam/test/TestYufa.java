@@ -1,4 +1,5 @@
 package cn.bsexam.test;
+import java.io.File;
 import java.util.HashMap;
 public class TestYufa {
 
@@ -12,7 +13,9 @@ public class TestYufa {
 		int i = 0 ;
 		boolean f = flag[i++]&&flag[i++]&&flag[i++]&&flag[i++];
 		System.out.println(i);
-		System.out.println(f);
+		System.out.println(File.separator);
+		File file = new File("D:"+File.separator+"451280200016.jpeg");
+		System.out.println(file.exists());
 	}
 
 }

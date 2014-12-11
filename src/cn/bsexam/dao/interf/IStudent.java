@@ -9,4 +9,5 @@ public interface IStudent {
 	boolean insertOne(Student e);
 	boolean updateOne(Student e);
 	void setConnection(Connection conn);
+	boolean updateImage(Student e);
 }

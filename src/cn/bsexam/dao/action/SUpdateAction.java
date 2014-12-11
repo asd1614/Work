@@ -30,4 +30,13 @@ public class SUpdateAction {
 		ShowStu stu = dao_stu.findShowStu(sno);
 		return stu ;
 	}
+	public static boolean updateImage_f(Student s){
+		boolean flag =false;
+		DBC dbc = new DatabaseConnectionODBC();
+		Connection conn = dbc.getConnection();
+		IStudent dao_s	= new StudentManage();
+		dao_s.setConnection(conn);
+		flag = dao_s.updateImage(s);
+		return flag ;
+	}
 }
