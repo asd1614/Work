@@ -3,13 +3,13 @@ package cn.bsexam.vo;
 import java.sql.Timestamp;
 
 public class ExamType {
-	private int eno;
+	private String eno;
 	private String ename;
 	private Timestamp edate;
-	public int getEno() {
+	public String getEno() {
 		return eno;
 	}
-	public void setEno(int eno) {
+	public void setEno(String eno) {
 		this.eno = eno;
 	}
 	public String getEname() {

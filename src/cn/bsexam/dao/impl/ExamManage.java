@@ -10,15 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class ExamManage implements IExamType{
 	private String SQL_VIEW = 
-			"SELECT eno, ename,edate FROM bsexam.examtype ORDER BY eno ASC;";
+			"SELECT eno, ename,edate FROM examtype ORDER BY eno ASC;";
 	private String SQL_INSERT =
-			"INSERT INTO bsexam.degree (eno,ename,edate) VALUES (?,?,?);";
+			"INSERT INTO examtype (eno,ename,edate) VALUES (?,?,?);";
 	private String SQL_INSERT_L =
-			"INSERT INTO bsexam.degree (eno,ename,edate) VALUES (?,?,?) ";
+			"INSERT INTO examtype (eno,ename,edate) VALUES (?,?,?) ";
 	private String SQL_UPDATE = 
-			"UPDATE degree set eno = ?, ename = ?, edate = ?  WHERE eno = ? ;";
+			"UPDATE examtype set eno = ?, ename = ?, edate = ?  WHERE eno = ? ;";
 	private String SQL_DELETE = 
-			"DELETE FROM degree WHERE eno = ? ;";
+			"DELETE FROM examtype WHERE eno = ? ;";
 	private Connection conn = null;
 	public void setConnection(Connection conn){
 		this.conn = conn;
@@ -33,7 +33,7 @@ public class ExamManage implements IExamType{
 			re = pstat.executeQuery();
 			while(re.next()){
 				ExamType e = new ExamType();
-				e.setEno(re.getInt(1));
+				e.setEno(re.getString(1));
 				e.setEname(re.getString(2));
 				e.setEdate(re.getTimestamp(2));
 				list.add(e);
@@ -56,7 +56,7 @@ public class ExamManage implements IExamType{
 			return flag;
 		try {
 			pstat = conn.prepareStatement(SQL_INSERT);
-			pstat.setInt(1, e.getEno());
+			pstat.setString(1, e.getEno());
 			pstat.setString(2, e.getEname());
 			pstat.setTimestamp(3,e.getEdate());
 			if(pstat.executeUpdate()==1)
@@ -83,7 +83,7 @@ public class ExamManage implements IExamType{
 			pstat = conn.prepareStatement(SQL_INSERT_L);
 			if(!list.isEmpty()){
 				for(int i=0,j=1;i<size;i++){				
-					pstat.setInt(j++, list.get(i).getEno());
+					pstat.setString(j++, list.get(i).getEno());
 					pstat.setString(j++, list.get(i).getEname());
 					pstat.setTimestamp(j++, list.get(i).getEdate());
 					}
@@ -108,7 +108,7 @@ public class ExamManage implements IExamType{
 			return flag;
 		try {
 			pstat = conn.prepareStatement(SQL_UPDATE);
-			pstat.setInt(1, e.getEno());
+			pstat.setString(1, e.getEno());
 			pstat.setString(2, e.getEname());
 			pstat.setTimestamp(3, e.getEdate());
 			pstat.setInt(4, eno);

@@ -14,15 +14,11 @@ public class TextLogin {
 			DatabaseConnectionODBC dbc = new DatabaseConnectionODBC();
 			Connection conn = dbc.getConnection();
 			PreparedStatement pstat = 
-					conn.prepareStatement("select RTRIM(sno) from suser where sno = ? and password = ? ");
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter your ID :");
-		pstat.setString(1, scan.nextLine());
-		System.out.print("Enter your Password : ");
-		pstat.setString(2, scan.nextLine());
+					conn.prepareStatement("select edate from examtype ");
+		
 		ResultSet re = pstat.executeQuery();
-		if(re.next())
-			System.out.println("Resulte: "+re.getString(1));
+		while(re.next())
+			System.out.println("Resulte: "+re.getString(1).substring(0, 10));
 			
 		}catch(SQLException e){
 			System.err.print("Error" + e.getMessage());

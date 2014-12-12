@@ -10,7 +10,7 @@ public interface ISE {
 	SE viewOne(String sno);
 	boolean insertOne(SE e);
 	boolean insertList(List<SE> list);
-	boolean updateOne(SE e,String sno);
-	boolean deleteOne(String sno);
+	boolean updateOne(SE e);
+	boolean deleteOne(String sno,String edate);
 	void setConnection(Connection conn);
 }

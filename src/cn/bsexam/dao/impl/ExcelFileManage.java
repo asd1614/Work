@@ -44,7 +44,7 @@ public class ExcelFileManage implements IExcelFile{
 				e.setCspecial(rs.getString(11));
 				e.setCname(rs.getString(12));
 				e.setEno(rs.getInt(13));
-				e.setEdate(rs.getTimestamp(14));
+				e.setEdate(rs.getString(14));
 				this.list.add(e);
 			}
 		}catch(SQLException e1){

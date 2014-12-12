@@ -16,7 +16,8 @@ public class ExcelFile {
 	private String cspecial;
 	private String cname;
 	private int eno;
-	private Timestamp edate;
+	private String edate;
+	private Timestamp time;
 	public String getSname() {
 		return sname;
 	}
@@ -95,11 +96,17 @@ public class ExcelFile {
 	public void setEno(int eno) {
 		this.eno = eno;
 	}
-	public Timestamp getEdate() {
+	public String getEdate() {
 		return edate;
 	}
-	public void setEdate(Timestamp edate) {
+	public void setEdate(String edate) {
 		this.edate = edate;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 	
 }
