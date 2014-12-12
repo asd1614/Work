@@ -40,8 +40,8 @@ public class ImageSendServlet extends HttpServlet {
 		Student s = (Student)session.getAttribute("s");
 		ShowStu stu = (ShowStu)session.getAttribute("stu");
 		String RealPath = session.getServletContext().getRealPath("/");
+		String path = RealPath+"images"+File.separator+stu.getCdepat()+File.separator+stu.getSno();
 		if(s.getImage_f()){
-			String path = RealPath+"images"+File.separator+stu.getCdepat()+File.separator+stu.getSno();
 			File file = new File(path+".jpg");
 			if(!file.exists()){
 				file = new File(path+"jpeg");
@@ -49,6 +49,15 @@ public class ImageSendServlet extends HttpServlet {
 			if(!file.exists()){
 				file = new File(RealPath+"images"+File.separator+"img.jpg");
 			}
+			BufferedImage image = ImageIO.read(file);
+			try {
+				//·¢ËÍÍ¼Æ¬
+				ImageIO.write(image, "JPEG", response.getOutputStream());
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+		}else{
+			File file = new File(RealPath+"images"+File.separator+"img.jpg");
 			BufferedImage image = ImageIO.read(file);
 			try {
 				//·¢ËÍÍ¼Æ¬

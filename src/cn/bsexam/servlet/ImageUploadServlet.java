@@ -81,7 +81,9 @@ public class ImageUploadServlet extends HttpServlet {
 					stu.getCdepat()+File.separator+stu.getSno()+"."+file.getFileExt();
 			file.setFileName(filename);
 			dao_upload.save(null);
-			SUpdateAction.updateImage_f((Student) session.getAttribute("s"));			
+			Student s = (Student) session.getAttribute("s");
+			s = SUpdateAction.updateImage_f(s);	
+			session.setAttribute("s", s);
 			out.print("上传成功");
 		}catch(Exception e){
 			out.println("上传失败");
