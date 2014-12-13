@@ -16,11 +16,17 @@ div.exam>pre{
 	width:600px;
 	text-align:center;
 }
+form{
+	margin-top:30px;
+}
 .div_input{
-	width:200px;
-	height:50px;
-	color:#ffffff;
-	background-color:#008aff;
-	font-size:20px;
-	border:7px #FFFFFF solid;
+	width: 220px;
+	height: 50px;
+	color: #FFF;
+	background-color: #008AFF;
+	font-size: 20px;
+	border: 7px solid #FFF;
+	margin: 20px auto;
+	text-align: center;
+	padding: 10px;
 }

@@ -12,7 +12,7 @@ public class SEManage implements ISE{
 	private String SQL_VIEW_L = 
 			"SELECT sno,eno,edate,egrade FROM se ;";
 	private String SQL_VIEW = 
-			"SELECT sno,eno,edate,egrade FROM se WHERE sno= ? ;";
+			"SELECT sno,eno,edate,egrade FROM se WHERE sno= ? and edate =?;";
 	private String SQL_INSERT =
 			"INSERT INTO se (sno,eno,edate) VALUES (?,?,?);";
 	private String SQL_UPDATE = 
@@ -46,7 +46,7 @@ public class SEManage implements ISE{
 		
 		return list;		
 	}
-	public SE viewOne(String sno){
+	public SE viewOne(String sno,String edate){
 		
 		PreparedStatement pstat;
 		ResultSet re;
@@ -54,12 +54,14 @@ public class SEManage implements ISE{
 		try {
 			pstat = conn.prepareStatement(SQL_VIEW);
 			pstat.setString(1, sno);
+			pstat.setString(2, edate);
 			re = pstat.executeQuery();
-			re.next();
-			e.setSno(re.getString(1));
-			e.setEno(re.getString(2));
-			e.setEdate(re.getString(3));
-			e.setEgrade(re.getDouble(4));
+			if(re.next()){
+				e.setSno(re.getString(1));
+				e.setEno(re.getString(2));
+				e.setEdate(re.getString(3));
+				e.setEgrade(re.getDouble(4));
+			}
 			
 		} catch (SQLException e1) {
 			// TODO 自动生成的 catch 块

@@ -47,4 +47,11 @@ public class ExamAction {
 		}
 		return flag;
 	}
+	public SE getSE(String sno,String edate){
+		ISE dao_se = new SEManage();
+		DBC dbc = new DatabaseConnectionODBC();
+		dao_se.setConnection(dbc.getConnection());
+		SE se = dao_se.viewOne(sno, edate);
+		return se;
+	}
 }

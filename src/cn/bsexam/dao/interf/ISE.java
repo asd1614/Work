@@ -7,7 +7,7 @@ import cn.bsexam.vo.SE;
 
 public interface ISE {
 	List<SE> viewList();
-	SE viewOne(String sno);
+	SE viewOne(String sno,String edate);
 	boolean insertOne(SE e);
 	boolean insertList(List<SE> list);
 	boolean updateOne(SE e);
