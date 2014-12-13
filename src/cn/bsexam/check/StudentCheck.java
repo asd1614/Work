@@ -20,5 +20,19 @@ public class StudentCheck {
 		s.setCname(str[3]);
 		return s;
 	}
-	
+	public static boolean isEmpty(Student s){
+		boolean flag = false;
+		if(s.getSname().equals("")||s.getSname()==null)
+			return flag;
+		if(s.getSsex().equals("")||s.getSsex()==null)
+			return flag;
+		if(s.getSid().equals("")||s.getSid().length()>Sid_Length||s.getSid()==null)
+			return flag;
+		if(s.getCname().equals("")||s.getCname()==null)
+			return flag;
+		if(!s.getImage_f())
+			return flag;
+		flag = true;
+		return flag;
+	}
 }

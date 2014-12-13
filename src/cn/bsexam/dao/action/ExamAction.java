@@ -11,22 +11,18 @@ import cn.bsexam.dao.interf.IExamType;
 import cn.bsexam.dao.impl.*;
 import cn.bsexam.dbc.*;
 public class ExamAction {
-	private Map<String,ExamType> map =null;
+	private List<ExamType> list =null;
 	public ExamAction(){
 		this.init();
 	}
 	private void init(){
-		map = new Hashtable<String,ExamType>();
 		DBC dbc = new DatabaseConnectionODBC();
 		IExamType dao_ex = new ExamManage();
 		dao_ex.setConnection(dbc.getConnection());
-		List<ExamType> list = dao_ex.viewList();
-		for(int i=0 ;i<list.size();i++){
-			map.put(list.get(i).getEno(),list.get(i));
-		}
+		this.list = dao_ex.viewList();
 	}
-	public Map<String,ExamType> getMap(){
-		return this.map;
+	public List<ExamType> getList(){
+		return this.list;
 	}
 	public void refresh(){
 		this.init();

@@ -35,7 +35,7 @@ public class ExamManage implements IExamType{
 				ExamType e = new ExamType();
 				e.setEno(re.getString(1));
 				e.setEname(re.getString(2));
-				e.setEdate(re.getTimestamp(2));
+				e.setEdate(re.getTimestamp(3));
 				list.add(e);
 			}
 		} catch (SQLException e) {

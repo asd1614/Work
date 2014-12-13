@@ -20,7 +20,7 @@ $(document).ready(function(){
 		$('#content_right').load('studentForm.jsp');
 	});
 	$('a#exma_html').click(function(){
-		$('#content_right').load('student_exam.html');
+		$('#content_right').load('studentExam.jsp');
 	});
 	$('a#mm_alter').click(function(){
 		$('#content_right').load('student_alter.html');
