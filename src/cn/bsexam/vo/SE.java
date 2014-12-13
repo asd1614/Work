@@ -12,13 +12,13 @@ public class SE {
 		return sno;
 	}
 	public void setSno(String sno) {
-		this.sno = sno.trim();
+		this.sno = sno==null?"":sno.trim();
 	}
 	public String getEdate() {
 		return edate;
 	}
 	public void setEdate(String edate) {
-		this.edate = edate.trim();
+		this.edate = edate==null?"":edate.trim();
 	}
 	public String getEno() {
 		return eno;

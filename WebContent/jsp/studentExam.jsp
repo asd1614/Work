@@ -11,16 +11,33 @@
 <link rel="stylesheet" type="text/css" href="../css/student_exam.css"/>
 <%
 	List<ExamType> list = (List<ExamType>) application.getAttribute("list_ex");
-	if(list==null||list.isEmpty()){
-		ExamAction dao_ex = new ExamAction();
+	ExamAction dao_ex = new ExamAction();
+	if(list==null||list.isEmpty()){		
 		list = dao_ex.getList();
 		application.setAttribute("list_ex",list);
 		se = dao_ex.getSE(s.getSno(), list.get(0).getEdate().toString().substring(0, 10));
+		session.setAttribute("se", se);
+	}else{
+		se = dao_ex.getSE(s.getSno(), list.get(0).getEdate().toString().substring(0, 10));
+		session.setAttribute("se", se);
 	}
 %>
 <script>
 	$(document).ready(function(){
-		
+		$('input[name="eno"]').change(function(){
+			var no = $(this).val();		
+			$(this).parent().siblings().css("border-color","#FFF");
+			$.post(
+				"../SignUpServlet",
+				{eno:no},
+				function(data){					
+					$('.note').text(data);
+					$('.note').show();
+					$('input[value="'+no+'"]').parent().css("border-color","#699");
+					
+				}
+			);
+		});
 	});
 </script>
 <div class="exam">
@@ -48,4 +65,5 @@
 				<%} %>
 		<%	} %>
 	</form>
+	<p class="note">ÐÞ¸Ä³É¹¦</p>
 </div>

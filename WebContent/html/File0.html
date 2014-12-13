@@ -9,14 +9,22 @@
 
 <script>
 $(document).ready(function(){
-	
+	$('input[name="pic"]').change(function(){
+		var no = $(this).val();
+		var eno = $('input[value="'+no+'"]').val();
+		alert(eno);
+	});
 });
 </script>
 </head>
 <body>
-<form action="../ServletUpload" method="post" id="imagefile" enctype="multipart/form-data">
-	<input type="file" name="pic" id="file1"><br>
-	<input type="submit" value="submit" id="submitbutton">
+<form action="" method="post" id="imagefile" enctype="multipart/form-data">
+	<div>
+		<input type="radio" name="pic" value="123" checked/>123<br>
+	</div>
+	<div>
+		<input type="radio" name="pic" value="456" />456
+	</div>
 </form>
 <p id="message"></p>
 </body>
