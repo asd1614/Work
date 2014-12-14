@@ -28,9 +28,7 @@ $(document).ready(function(){
 	$('a#mm_alter').click(function(){
 		$('#content_right').load('studentAlter.jsp');
 	});
-	$('a#sign_off').click(function(){
-		$('#content_right').load('');
-	});
+	
 });
 </script>
 <div class="left_Tool">
@@ -73,7 +71,7 @@ $(document).ready(function(){
 				</ul></li>
 			<li><a href="#" id="link4"><span>注销</span></a>
 				<ul id="uL4">
-					<li><a href="#" id="sign_off"><span>安全退出</span></a></li>
+					<li><a href="../LoginOutServlet" id="sign_off"><span>安全退出</span></a></li>
 				</ul></li>
 		</ul>
 	</div>
