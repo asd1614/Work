@@ -64,7 +64,7 @@ public class StudentServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+Redirect);	
 		}else{
 			HashMap map = new HashMap();
-			map.put("authCode", "ÑéÖ¤Âë´íÎó");
+			map.put("authCode", "´íÎó");
 			session.setAttribute("map", map);
 			response.sendRedirect(request.getContextPath()+Redirect);
 		}

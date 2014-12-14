@@ -94,6 +94,15 @@ div.login input[type="submit"], input[type="reset"]{
 label.type_label{
 	font-size:15px;
 }
+label#auth{
+	color: #FF6;
+	position: relative;
+	font-size: 15px;
+	font-weight: bold;
+	bottom: 14px;
+	left: 7px;
+	display:none;
+}
 div.bottom{
 	background-color:#336666;
 	width:810px;

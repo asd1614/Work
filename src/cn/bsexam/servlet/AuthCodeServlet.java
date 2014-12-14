@@ -54,7 +54,7 @@ public class AuthCodeServlet extends HttpServlet {
 			out.print("正确");
 			out.close();
 		}else{
-			out.print("验证码错误");
+			out.print("错误");
 			out.close();
 		}
 	}

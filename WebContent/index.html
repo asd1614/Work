@@ -10,6 +10,7 @@
 <script src="js/qtip/jquery.qtip.js"></script>
 
 <script>
+var flag = false;
 $(document).ready(function(){
 	function getCode(){
 		$.ajax({url: 'AuthCodeServlet?'+$('.test').val(),
@@ -17,31 +18,22 @@ $(document).ready(function(){
     		type:"POST", 
     		data: {authCode:$('.test').val()},
     		success: function(data){
-    	       $('#qtip-0-content').text(data);
+    	       $('#auth').text(data);
+    	       $('#auth').show();
     	      }
     	})
 	}
-	$('.test').bind("blur mouseout",function(){
-		getCode();		
+	$('.test').keyup(function(){
+		var str = $(this).val();
+		if(str.length==4){
+			getCode();			
+		}
 	});
-	$('.test').qtip({
-	    content:{
-	    	text:' '
-	    },
-		position:{
-			my:'left center',
-			at:'right center',
-			target:$('#img_test')
-		},
-	    show: {
-	    	event:'blur'
-	    },
-	    hide:{
-	    	event:"focus"
-	    },
-	    style: {
-	    	def:false
-	    }
+	$('.login_form').submit(function(){
+		if($('#auth').text()=='正确')
+			return true;
+		else
+			return false;
 	});
 });
 </script>
@@ -70,7 +62,7 @@ $(document).ready(function(){
             		<label for="admin" class="type_label">管理员</label> <br/>
 					<input class="test" type="text" name="authCode"/>
 					<img src="AuthCodeServlet" id="img_test" onclick="this.src=this.src+'?'+ Math.random()"/>
-					<label id="auth"></label>
+					<label id="auth">错误</label>
 					<br/>
 					<input class="bottom1" type="reset" name="reset" value="重置"/>
             		<input class="bottom1" type="submit" name="submit" value="登陆"/>
