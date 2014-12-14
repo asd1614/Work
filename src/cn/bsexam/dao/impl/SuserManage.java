@@ -19,6 +19,8 @@ public class SuserManage implements ISuser {
 	private String SQL_INSERT = "INSERT INTO suser(sno,password) VALUES (?,?)";
 	//删除某个学生SQL语句
 	private String SQL_DELETE = "DELETE FROM suser WHERE sno=? ;";
+	//修改密码
+	private String SQL_UPDATE = "UPDATE suser set password =? WHERE sno = ? ;";
 	//设置数据库连接
 	public void setConnection(Connection conn){
 		this.conn = conn;
@@ -98,6 +100,23 @@ public class SuserManage implements ISuser {
 			i = pstat.executeUpdate();
 			if(i==1)
 				flag = true;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	@Override
+	public boolean updatePW(SUser s) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		try{
+			PreparedStatement pstat = this.conn.prepareStatement(SQL_UPDATE);
+			pstat.setString(1, s.getPassword());
+			pstat.setString(2, s.getSno());
+			if(pstat.executeUpdate()==1){
+				flag = true;
+			}
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

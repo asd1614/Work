@@ -7,6 +7,7 @@ public interface ISuser {
 	boolean insertOne(SUser u);
 	boolean insertList(List<SUser> list);
 	String check(SUser s);
+	boolean updatePW(SUser s);
 	boolean delete(String sno);
 	void setConnection(Connection conn);
 }

@@ -21,6 +21,15 @@ form#mm>label[for="new"],label[for="pass"]{
 }
 form#mm>label{
 	padding-right:0.6em;
+	font-size:13px;
+}
+.note{
+	font-size:13px;
+	color: #FFFF66;
+	display:none;
+}
+#done_note{
+	margin-left: 20px;
 }
 form#mm>input{
 	margin-bottom:20px;

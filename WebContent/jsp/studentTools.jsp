@@ -16,6 +16,9 @@ $(document).ready(function(){
 	$('a#link3').click(function(){
 		$('ul#uL3').slideToggle();
 	});
+	$('a#link4').click(function(){
+		$('ul#uL4').slideToggle();
+	});
 	$('a#messli').click(function(){
 		$('#content_right').load('studentForm.jsp');
 	});
@@ -23,7 +26,10 @@ $(document).ready(function(){
 		$('#content_right').load('studentExam.jsp');
 	});
 	$('a#mm_alter').click(function(){
-		$('#content_right').load('student_alter.html');
+		$('#content_right').load('studentAlter.jsp');
+	});
+	$('a#sign_off').click(function(){
+		$('#content_right').load('');
 	});
 });
 </script>
@@ -65,7 +71,10 @@ $(document).ready(function(){
 				<ul id="uL3">
 					<li><a href="#" id="mm_alter"><span>密码修改</span></a></li>
 				</ul></li>
-
+			<li><a href="#" id="link4"><span>注销</span></a>
+				<ul id="uL4">
+					<li><a href="#" id="sign_off"><span>安全退出</span></a></li>
+				</ul></li>
 		</ul>
 	</div>
 </div>
