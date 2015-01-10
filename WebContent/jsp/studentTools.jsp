@@ -65,7 +65,7 @@ $(document).ready(function(){
 				<ul id="uL2">
 					<li><a href="#" id="exma_html"><span>英语等级考试</span></a></li>					
 				</ul></li>
-			<li><a href="#" id="link3"><span>密码管理</span></a>
+			<li><a href="#" id="link3"><span>安全中心</span></a>
 				<ul id="uL3">
 					<li><a href="#" id="mm_alter"><span>密码修改</span></a></li>
 				</ul></li>
