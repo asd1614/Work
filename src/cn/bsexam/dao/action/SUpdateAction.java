@@ -42,4 +42,13 @@ public class SUpdateAction {
 		}else
 			return s;
 	}
+	public static boolean insertS(Student s){
+		boolean flag =false;
+		DBC dbc = new DatabaseConnectionODBC();
+		Connection conn = dbc.getConnection();
+		IStudent dao_s	= new StudentManage();
+		dao_s.setConnection(conn);
+		flag = dao_s.insertOne(s);
+		return flag;
+	}
 }

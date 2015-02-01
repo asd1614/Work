@@ -44,7 +44,25 @@ public class DepatManage implements IDepat{
 		
 		return list;		
 	}
-	
+	public Map<String,String> viewMap(){
+		PreparedStatement pstat;
+		ResultSet re;
+		Map<String,String> map = new HashMap<String,String>();
+		try {
+			pstat = conn.prepareStatement(SQL_VIEW);
+			re = pstat.executeQuery();
+			while(re.next()){
+				String cdepat = re.getString(1);
+				String depatname = re.getString(2);
+				map.put(depatname, cdepat);
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return map;	
+	}
 	public boolean insertOne(Department e) {
 		// TODO 自动生成的方法存根
 		
@@ -142,5 +160,5 @@ public class DepatManage implements IDepat{
 		
 		return false;
 	}
-	
+		
 }

@@ -8,34 +8,121 @@
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/qtip/imagesloaded.pkg.min.js"></script>
 <script src="js/qtip/jquery.qtip.js"></script>
-
-<script>
-var flag = false;
-$(document).ready(function(){
-	function getCode(){
-		$.ajax({url: 'AuthCodeServlet?'+$('.test').val(),
-    		cache:false,
-    		type:"POST", 
-    		data: {authCode:$('.test').val()},
-    		success: function(data){
-    	       $('#auth').text(data);
-    	       $('#auth').show();
-    	      }
-    	})
-	}
-	$('.test').keyup(function(){
-		var str = $(this).val();
-		if(str.length==4){
-			getCode();			
-		}
-	});
-	$('.login_form').submit(function(){
-		if($('#auth').text()=='正确')
-			return true;
-		else
+<meta content="JavaScript" name="vs_defaultClientScript">
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript">
+<!--
+	function ChkValue() {
+		var vU = $('UID').innerHTML;
+		vU = vU.substring(0, 1) + vU.substring(2, 3);
+		var vcFlag = "YES";
+		if ($('txt_asmcdefsddsd').value == '') {
+			alert('须录入' + vU + '！');
+			$('txt_asmcdefsddsd').focus();
 			return false;
-	});
-});
+		} else if ($('txt_pewerwedsdfsdff').value == '') {
+			alert('须录入密码！');
+			$('txt_pewerwedsdfsdff').focus();
+			return false;
+		} else if ($('txt_sdertfgsadscxcadsads').value == '' && vcFlag == "YES") {
+			alert('须录入验证码！');
+			$('txt_sdertfgsadscxcadsads').focus();
+			return false;
+		} else {
+			$('divLogNote').innerHTML = '<font color="red">正在通过身份验证...请稍候!</font>';
+			return true;
+		}
+	}
+	function openWinLog(theURL, w, h) {
+		var Tform, retStr;
+		eval("Tform='width=" + w + ",height=" + h
+				+ ",scrollbars=no,resizable=no'");
+		pop = window.open(theURL, 'winKPT', Tform); //pop.moveTo(0,75);
+		eval("Tform='dialogWidth:" + w + "px;dialogHeight:" + h
+				+ "px;status:no;scrollbars=no;help:no'");
+		pop.moveTo((screen.width - w) / 2, (screen.height - h) / 2);
+		if (typeof (retStr) != 'undefined')
+			alert(retStr);
+	}
+	function showLay(divId) {
+		var objDiv = eval(divId);
+		if (objDiv.style.display == "none") {
+			objDiv.style.display = "";
+		} else {
+			objDiv.style.display = "none";
+		}
+	}
+	window.onload = function() {
+		var sPC = MSIE ? window.navigator.userAgent + window.navigator.cpuClass
+				+ window.navigator.appMinorVersion + ' SN:NULL'
+				: window.navigator.userAgent + window.navigator.oscpu
+						+ window.navigator.appVersion + ' SN:NULL';
+		try {
+			$('pcInfo').value = sPC;
+		} catch (err) {
+		}
+		try {
+			$('txt_asmcdefsddsd').focus();
+		} catch (err) {
+		}
+		try {
+			$('typeName').value = $N('Sel_Type')[0].options[$N('Sel_Type')[0].selectedIndex].text;
+		} catch (err) {
+		}
+	}
+	function openWinDialog(url, scr, w, h) {
+		var Tform;
+		eval("Tform='dialogWidth:" + w + "px;dialogHeight:" + h + "px;status:"
+				+ scr + ";scrollbars=no;help:no'");
+		window.showModalDialog(url, 1, Tform);
+	}
+	function openWin(theURL) {
+		var Tform, w, h;
+		try {
+			w = window.screen.width - 10;
+		} catch (e) {
+		}
+		try {
+			h = window.screen.height - 30;
+		} catch (e) {
+		}
+		try {
+			eval("Tform='width=" + w + ",height=" + h
+					+ ",scrollbars=no,status=no,resizable=yes'");
+			pop = parent.window.open(theURL, '', Tform);
+			pop.moveTo(0, 0);
+			parent.opener = null;
+			parent.close();
+		} catch (e) {
+		}
+	}
+	function changeValidateCode(Obj) {
+		var dt = new Date();
+		Obj.src = "ValidateCode?t=" + dt.getMilliseconds();
+	}
+	function chkpwd(obj) {
+		if (obj.value != '') {
+			var s = md5(
+					document.all.txt_asmcdefsddsd.value
+							+ md5(obj.value).substring(0, 30).toUpperCase()
+							+ '10609').substring(0, 30).toUpperCase();
+			document.all.dsdsdsdsdxcxdfgfg.value = s;
+		} else {
+			document.all.dsdsdsdsdxcxdfgfg.value = obj.value;
+		}
+	}
+	function chkyzm(obj) {
+		if (obj.value != '') {
+			var s = md5(
+					md5(obj.value.toUpperCase()).substring(0, 30).toUpperCase()
+							+ '10609').substring(0, 30).toUpperCase();
+			document.all.fgfggfdgtyuuyyuuckjg.value = s;
+		} else {
+			document.all.fgfggfdgtyuuyyuuckjg.value = obj.value.toUpperCase();
+		}
+	}
+//-->
 </script>
 </head>
 
@@ -51,17 +138,22 @@ $(document).ready(function(){
     	<div class="content_right">
     		<p>登陆</p>
             <div class="login">
-            	<form action="StudentServlet" class="login_form" method="post">
+            	<form action="NewStudentSerlvet" class="login_form" method="post" onsubmit="return ChkValue();">
+                	<input id="pcInfo" type="hidden" name="pcInfo">
+					<input type="hidden" id="dsdsdsdsdxcxdfgfg" name="dsdsdsdsdxcxdfgfg">
+					<input type="hidden" id="fgfggfdgtyuuyyuuckjg"	name="fgfggfdgtyuuyyuuckjg">
                 	<label class="name">用户账号</label>
-            		<input class="name" type="text"name="name"/>
+                	<input name="txt_asmcdefsddsd" id="txt_asmcdefsddsd" type="text" class="name" /><br/>
             		<label class="pwd" >密码</label>
-            		<input class="pwd" type="password"name="pwd"/><br/>
+            		<input class="pwd" id="txt_pewerwedsdfsdff" type="password" maxLength="25" 
+            			name="txt_pewerwedsdfsdff" value="" onblur="chkpwd(this)" onkeyup="chkpwd(this)" /><br/>
             		<input id="stu" type="radio" name="type" checked="checked"/>
             		<label for="stu" class="type_label">学生</label> 
             		<input id="admin" type="radio" name="type"  />
             		<label for="admin" class="type_label">管理员</label> <br/>
-					<input class="test" type="text" name="authCode"/>
-					<img src="AuthCodeServlet" id="img_test" onclick="this.src=this.src+'?'+ Math.random()"/>
+					<input class="test" id="txt_sdertfgsadscxcadsads" name="txt_sdertfgsadscxcadsads" type="text"
+						onblur="chkyzm(this)" onkeyup="chkyzm(this)" maxlength="4" />
+					<img src="ValidateCode" id="img_test" onclick="changeValidateCode(this)" alt="单击可更换图片！"/>
 					<label id="auth">错误</label>
 					<br/>
 					<input class="bottom1" type="reset" name="reset" value="重置"/>

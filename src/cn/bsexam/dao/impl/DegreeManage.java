@@ -44,7 +44,26 @@ public class DegreeManage implements IDegree{
 		
 		return list;		
 	}
-	
+	public Map<String,String> viewMap(){
+		
+		PreparedStatement pstat;
+		ResultSet re;
+		Map<String,String> map = new HashMap<String,String>();
+		try {
+			pstat = conn.prepareStatement(SQL_VIEW);
+			re = pstat.executeQuery();
+			while(re.next()){
+				String dno = String.valueOf(re.getInt(1));
+				String dname = re.getString(2);
+				map.put(dname, dno);
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		return map;		
+	}
 	public boolean insertOne(Degree e) {
 		// TODO 自动生成的方法存根
 		

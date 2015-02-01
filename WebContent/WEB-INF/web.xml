@@ -122,4 +122,24 @@
     <servlet-name>LoginOutServlet</servlet-name>
     <url-pattern>/LoginOutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValidateCode</display-name>
+    <servlet-name>ValidateCode</servlet-name>
+    <servlet-class>cn.bsexam.servlet.ValidateCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateCode</servlet-name>
+    <url-pattern>/ValidateCode</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewStudentSerlvet</display-name>
+    <servlet-name>NewStudentSerlvet</servlet-name>
+    <servlet-class>cn.bsexam.servlet.NewStudentSerlvet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewStudentSerlvet</servlet-name>
+    <url-pattern>/NewStudentSerlvet</url-pattern>
+  </servlet-mapping>
 </web-app>
