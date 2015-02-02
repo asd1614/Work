@@ -23,13 +23,14 @@ public class StudentManage implements IStudent {
 	}
 	public Student viewOne(String sno) {
 		// TODO 自动生成的方法存根
-		Student e = new Student();
+		Student e = null;
 		if(sno!=null){
 			try {
 				PreparedStatement pstat = this.conn.prepareStatement(SQL_VIEW);
 				pstat.setString(1, sno);
 				ResultSet re = pstat.executeQuery();
-				while(re.next()){					
+				while(re.next()){
+					e = new Student();
 					e.setSno(re.getString(1));					
 					e.setSname(re.getString(2));					
 					e.setSsex(re.getString(3));					

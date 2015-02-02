@@ -36,4 +36,11 @@ public class LoginAction {
 		Student student = dao_s.viewOne(sno);
 		return student; 
 	}
+	public static boolean isExists(String sno){
+		Student s = getStudent(sno);
+		if(s!=null)
+			return true;
+		else
+			return false;
+	}
 }

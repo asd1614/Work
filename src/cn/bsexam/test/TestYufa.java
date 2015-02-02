@@ -1,5 +1,7 @@
 package cn.bsexam.test;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
@@ -10,24 +12,19 @@ import cn.bsexam.vo.ExamType;
 public class TestYufa {
 
 	public static void main(String[] args)  {
-		 String str = "cn.bsexam.dbc.DatabaseConnectionODBC";
-		 Connection conn;
-		 try {
-			 DBC dbc = new DatabaseConnectionODBC();
-			 conn = dbc.getConnection();
-			 if(conn==null)
-				 throw new ClassNotFoundException();
-		} catch(ClassNotFoundException e1){
-			System.out.println("我抛出了一个空指针异常");
+		InetAddress jwweb = null ;
+		try{
+			byte ip[] = {(byte) 192,(byte) 168,0,6};
+			jwweb = InetAddress.getByAddress(ip);
+		}catch(UnknownHostException e){
 			try {
-				 DBC dbc = new DatabaseConnectionNo();
-				 conn = dbc.getConnection();
-				 if(conn==null)
-					 throw new ClassNotFoundException();
-			} catch(Exception e2){
-				System.out.println("我抛出了一个空指针异常11");
+				jwweb = InetAddress.getByName("www.bsuc.cn");
+			} catch (UnknownHostException e1) {
+				// TODO 自动生成的 catch 块
+				e1.printStackTrace();
 			}
 		}
+		System.out.println(jwweb.toString());
 	}
 
 }

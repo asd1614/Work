@@ -31,7 +31,7 @@ public class HttpHeadHelper {
 	private void init(){
 		head = new HashMap<String ,String>();		
 		head.put("Host", "www.bsuc.cn:8172\r\n");
-		head.put("Connection","keep-alive\r\n");		
+		head.put("Connection","close\r\n");		
 		head.put("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36\r\n");
 		head.put("Referer", "http://www.bsuc.cn:8172/jwweb/_data/index_LOGIN.aspx\r\n");
 		head.put("Origin", "http://www.bsuc.cn:8172\r\n");

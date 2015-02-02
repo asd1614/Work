@@ -76,7 +76,8 @@ public class NewStudentSerlvet extends HttpServlet {
 		HttpHeadHelper response_head = new HttpHeadHelper(input);
 		input.skip(response_head.dataLength());
 		if(checkLogin(input)){
-			DataDeal run_insert = new DataDeal(sessionId);
+			String sno  = parameter.get("txt_asmcdefsddsd")[0];
+			DataDeal run_insert = new DataDeal(sessionId,sno);
 			run_insert.run();
 			response.sendRedirect(request.getContextPath()+WardURL);						
 		}else

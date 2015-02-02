@@ -19,53 +19,66 @@ public class DataDeal implements Runnable{
 	private Document doc ;
 	private Map<String,String> data;
 	private Map<String,String> dapat;
-	public DataDeal(String sessionId){
+	private int progress ;
+	private boolean flag_s ;
+	private String sno ;
+	public DataDeal(String sessionId,String sno){
 		this.sessionId = sessionId;
 		this.dapat = DepartList.getMap();
-		
+		this.progress = 0;
+		this.sno = sno;
+		this.flag_s = LoginAction.isExists(sno);
 	}
 	public void run() {
-		this.doc = initInfo(sessionId);
-		this.data = dealDoc(doc);
-		Student s = new Student();
-		String cname = data.get("行政班级");
-		//设置学生对象的信息
-		s.setSno(data.get("学号"));
-		s.setSname(data.get("姓名"));
-		s.setSsex(data.get("性别"));
-		s.setSid(data.get("身份证号"));
-		s.setCname(cname);
-		//设置班级对象的基本信息，在这之前先查询是否有该班级的信息存在，如果存在则不再重新插入
-		String cdepat = dapat.get(data.get("院(系)/部"));		
-		ClassList dao_c = new ClassList();
-		List<ClassView> c_list = dao_c.getCList(cdepat);
-		boolean flag = false;
-		for(ClassView v:c_list){
-			if(v.getCname().equals(cname)){
-				flag = true;
-				break;
+		if(!flag_s){
+			this.doc = initInfo(sessionId);
+			setProgress(1);
+			this.data = dealDoc(doc);
+			setProgress(2);	
+			String cname = data.get("行政班级");
+			//设置班级对象的基本信息，在这之前先查询是否有该班级的信息存在，如果存在则不再重新插入
+			String cdepat = dapat.get(data.get("院(系)/部"));		
+			ClassList dao_c = new ClassList();
+			List<ClassView> c_list = dao_c.getCList(cdepat);
+			boolean flag_c = false;//标识是否已经插入有了该班级
+			for(ClassView v:c_list){
+				if(v.getCname().equals(cname)){
+					flag_c = true;
+					break;
+				}
 			}
-		}
-		if(!flag){
-			ClassMessage c = new ClassMessage();
-			c.setCname(cname);
-			c.setSyear(Integer.parseInt(data.get("入学年份").substring(2,4)));
-			c.setClength(Integer.parseInt(data.get("学制")));
-			String dname = data.get("培养层次");
-			Map<String,String> map_d = DegreeAction.getMap();
-			int dno = Integer.parseInt(map_d.get(dname));
-			c.setDno(dno);
-			c.setCspecial(data.get("专业"));
-			c.setCdepat(cdepat);
-			ClassList.insert(c);
-		}
-		SUpdateAction.insertS(s);
+			if(!flag_c){
+				ClassMessage c = new ClassMessage();
+				c.setCname(cname);
+				c.setSyear(Integer.parseInt(data.get("入学年份").substring(2,4)));
+				c.setClength(Integer.parseInt(data.get("学制")));
+				String dname = data.get("培养层次");
+				Map<String,String> map_d = DegreeAction.getMap();
+				int dno = Integer.parseInt(map_d.get(dname));
+				c.setDno(dno);
+				c.setCspecial(data.get("专业"));
+				c.setCdepat(cdepat);
+				ClassList.insert(c);
+				setProgress(3);
+			}else
+				setProgress(3);
+			//设置学生对象的信息
+			Student s = new Student();
+			s.setSno(sno);
+			s.setSname(data.get("姓名"));
+			s.setSsex(data.get("性别"));
+			s.setSid(data.get("身份证号"));
+			s.setCname(cname);
+			SUpdateAction.insertS(s);
+			setProgress(4);
+		}else
+			setProgress(4);
 	}
-	private static Document initInfo(String sessionId){
+	private static Document initInfo(String sessionId)  {
 		if(sessionId!=null&&!sessionId.equals("")){
-			InetAddress stuInfo ; 
-			Socket stuConn = null ;
-			try {
+			InetAddress stuInfo = null ; 
+			Socket stuConn = null ;			
+			try {				
 				stuInfo = InetAddress.getByName("www.bsuc.cn");
 				stuConn = new Socket(stuInfo,8172);
 			} catch (IOException e) {
@@ -141,5 +154,18 @@ public class DataDeal implements Runnable{
 		}
 		return map;
 	}
-	
+	private synchronized void setProgress(int progress){
+		if(progress<0){
+			this.progress = 0;
+		}
+		if(progress>4){
+			this.progress = 4;
+		}
+		if(progress>=0&&progress<=4){
+			this.progress = progress;
+		}
+	}
+	public synchronized int getProgress(){
+		return this.progress;
+	}
 }
