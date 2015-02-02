@@ -1,6 +1,6 @@
 package cn.bsexam.servlet;
 
-import cn.bsexm.util.*;
+import cn.bsexam.util.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

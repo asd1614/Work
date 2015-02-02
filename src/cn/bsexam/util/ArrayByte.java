@@ -1,4 +1,4 @@
-package cn.bsexm.util;
+package cn.bsexam.util;
 import java.io.IOException;
 import java.io.InputStream;
 

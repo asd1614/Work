@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.bsexm.util.*;
+import cn.bsexam.util.*;
 /**
  * Servlet implementation class AuthCodeServlet
  */

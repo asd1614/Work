@@ -1,4 +1,4 @@
-package cn.bsexm.util;
+package cn.bsexam.util;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;

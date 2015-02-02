@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GB2312"
     pageEncoding="GB2312"%>
-<%@ page import="cn.bsexm.util.DataDeal" %>
+<%@ page import="cn.bsexam.util.DataDeal" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

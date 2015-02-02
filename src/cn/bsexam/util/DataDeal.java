@@ -1,4 +1,4 @@
-package cn.bsexm.util;
+package cn.bsexam.util;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -123,6 +123,7 @@ public class DataDeal implements Runnable{
 		setProgress(3);
 		InputStream input = new BufferedInputStream(login.getInputStream());
 		HttpHeadHelper response_head = new HttpHeadHelper(input);
+		input.skip(response_head.dataLength());
 		//正在验证用户
 		setProgress(4);
 		if(checkLogin(input)){
@@ -135,6 +136,14 @@ public class DataDeal implements Runnable{
 			return false;
 		}
 	}
+	private boolean checkLogin(InputStream input) throws IOException{
+		byte bytedata[] = new byte[120];
+		input.read(bytedata);
+		ByteBuffer byteData = ByteBuffer.wrap(bytedata);
+		String docData = Charset.forName("GB2312").decode(byteData).toString();
+		return docData.contains(HTTP_200);		
+	}
+	
 	private static Document initInfo(String sessionId)  {
 		if(sessionId!=null&&!sessionId.equals("")){
 			InetAddress stuInfo = null ; 
@@ -189,13 +198,7 @@ public class DataDeal implements Runnable{
 		}
 		return null;
 	}
-	private boolean checkLogin(InputStream input) throws IOException{
-		byte bytedata[] = new byte[120];
-		input.read(bytedata);
-		ByteBuffer byteData = ByteBuffer.wrap(bytedata);
-		String docData = Charset.forName("GB2312").decode(byteData).toString();
-		return docData.contains(HTTP_200);		
-	}
+
 	private static Map<String ,String> dealDoc(Document doc){
 		Map<String,String> map = new HashMap<String,String>();
 		Element body = doc.body();
