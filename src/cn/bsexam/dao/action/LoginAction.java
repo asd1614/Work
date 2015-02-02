@@ -27,6 +27,13 @@ public class LoginAction {
 			return stu;
 		else return null;//失败返回空值
 	}
+	public static ShowStu getStu(String sno){
+		IShowStu dao_stu = new ShowStuImpl();
+		DBC dbc = new DatabaseConnectionODBC();
+		dao_stu.setConnection(dbc.getConnection());
+		ShowStu stu = dao_stu.findShowStu(sno);
+		return stu;
+	}
 	public static Student getStudent(String sno){
 		//初始化数据库接连
 		IStudent dao_s = new StudentManage();

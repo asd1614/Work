@@ -2,10 +2,13 @@
     pageEncoding="GB18030"%>
    <%@ page import="cn.bsexam.dao.action.*" %>
    <%@ page import="cn.bsexam.vo.Student" %>
+   <%@ page import="cn.bsexam.vo.ShowStu" %>
 <%
 String sno = (String)session.getAttribute("sno");
 Student s = LoginAction.getStudent(sno);
+ShowStu stu = LoginAction.getStu(sno);
 session.setAttribute("s", s);
+session.setAttribute("stu", stu);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
