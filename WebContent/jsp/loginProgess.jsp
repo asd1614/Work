@@ -31,13 +31,14 @@ text-align:center
  <% 
 	DataDeal deal = (DataDeal)session.getAttribute("deal");
 	int progress = deal.getProgress(); 
-	if(progress==-1)%>
+	if(progress==-1){%>
 	<script type="" LANGUAGE="JavaScript">
       setTimeout("location='../index.html'", 500);
     </script>
+    <%} %>
   	<%if (progress>=0&& progress<10) { %>
     <script type="" LANGUAGE="JavaScript">
-      setTimeout("location='loginProgess.jsp'", 500);
+      setTimeout("location='loginProgess.jsp'", 1000);
     </script>
 	<% } %>
 	<%if(progress==10) {%>
