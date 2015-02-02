@@ -69,7 +69,7 @@ public class DataDeal implements Runnable{
 			s.setSsex(data.get("性别"));
 			s.setSid(data.get("身份证号"));
 			s.setCname(cname);
-			SUpdateAction.insertS(s);
+			StudentAction.insertS(s);
 			setProgress(4);
 		}else
 			setProgress(4);

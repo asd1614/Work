@@ -42,8 +42,8 @@ public class SUpdateServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Student s = StudentCheck.getStudent(request);
 		response.setContentType("text/html;charset=GB18030");
-		if(SUpdateAction.update(s)){
-			ShowStu stu = SUpdateAction.refreshStu(s.getSno());
+		if(StudentAction.update(s)){
+			ShowStu stu = StudentAction.refreshStu(s.getSno());
 			HttpSession session = request.getSession();
 			session.setAttribute("stu", stu);
 			PrintWriter out = response.getWriter();

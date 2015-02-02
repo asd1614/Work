@@ -7,7 +7,7 @@ import cn.bsexam.dao.interf.*;
 import cn.bsexam.dao.impl.*;
 import cn.bsexam.dao.action.*;
 import cn.bsexam.dbc.*;
-public class SUpdateAction {
+public class StudentAction {
 	private static int Name_Length = 16;	//最长不超过16个汉字
 	private static int Sid_Length = 18;
 	public static boolean update(Student s){

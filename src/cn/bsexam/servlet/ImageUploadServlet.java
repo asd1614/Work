@@ -14,7 +14,7 @@ import cn.bsexam.dao.image.ImageCheck;
 import cn.bsexam.dao.upload.*;
 import cn.bsexam.vo.ShowStu;
 import cn.bsexam.vo.Student;
-import cn.bsexam.dao.action.SUpdateAction;
+import cn.bsexam.dao.action.StudentAction;
 
 /**
  * Servlet implementation class ImageUploadServlet
@@ -82,7 +82,7 @@ public class ImageUploadServlet extends HttpServlet {
 			file.setFileName(filename);
 			dao_upload.save(null);
 			Student s = (Student) session.getAttribute("s");
-			s = SUpdateAction.updateImage_f(s);	
+			s = StudentAction.updateImage_f(s);	
 			session.setAttribute("s", s);
 			out.print("上传成功");
 		}catch(Exception e){
