@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
     pageEncoding="GB18030"%>
-    <jsp:useBean id="stu" scope="session" class="cn.bsexam.vo.ShowStu"></jsp:useBean>
-    <jsp:setProperty property="*" name="stu"/>
     <jsp:useBean id="s" scope="session" class="cn.bsexam.vo.Student"></jsp:useBean>
     <jsp:setProperty property="*" name="s"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,10 +23,6 @@ $(document).ready(function(){
 	$('a#exma_html').click(function(){
 		$('#content_right').load('studentExam.jsp');
 	});
-	$('a#mm_alter').click(function(){
-		$('#content_right').load('studentAlter.jsp');
-	});
-	
 });
 </script>
 <div class="left_Tool">
@@ -39,19 +33,15 @@ $(document).ready(function(){
 		<table>
 			<tr>
 				<th>用户名：</th>
-				<td id="td_name"><%=stu.getSname() %></td>
+				<td id="td_name"><%=s.getSname() %></td>
 			</tr>
 			<tr>
 				<th>学&emsp;号：</th>
-				<td id="td_sno"><%=stu.getSno() %></td>
+				<td id="td_sno"><%=s.getSno() %></td>
 			</tr>
 			<tr>
 				<th>班&emsp;别：</th>
-				<td id="td_cname"><%=stu.getCname() %></td>
-			</tr>
-			<tr>
-				<th>系&emsp;别：</th>
-				<td id="td_xib"><%=stu.getCdepat() %></td>
+				<td id="td_cname"><%=s.getCname() %></td>
 			</tr>
 		</table>
 	</div>
@@ -64,10 +54,6 @@ $(document).ready(function(){
 			<li><a href="#" id="link2"><span>考试报名</span></a>
 				<ul id="uL2">
 					<li><a href="#" id="exma_html"><span>英语等级考试</span></a></li>					
-				</ul></li>
-			<li><a href="#" id="link3"><span>安全中心</span></a>
-				<ul id="uL3">
-					<li><a href="#" id="mm_alter"><span>密码修改</span></a></li>
 				</ul></li>
 			<li><a href="#" id="link4"><span>注销</span></a>
 				<ul id="uL4">

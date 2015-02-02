@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NewStudentSerlvet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String HTTP_200 = "MAINFRM.aspx";  
+	private static final String Wait = "/jsp/loginProgess.jsp";
 	private static final String WardURL = "/jsp/studentMain.jsp";
     private static final String Redirect = "/index.html";
     /**
@@ -58,6 +59,7 @@ public class NewStudentSerlvet extends HttpServlet {
 		}
 		_form = _form+"typeName="+URLEncoder.encode("学生", "GB2312")+"&Sel_Type=STU";
 		int content_length = _form.length();
+		//获取教务管理系统的ASP-sessionId
 		String sessionId = (String) request.getSession().getAttribute("Id");
 		InetAddress bsuc_Login = InetAddress.getByName("www.bsuc.cn");
 		Socket login = new Socket(bsuc_Login,8172);
@@ -78,8 +80,11 @@ public class NewStudentSerlvet extends HttpServlet {
 		if(checkLogin(input)){
 			String sno  = parameter.get("txt_asmcdefsddsd")[0];
 			DataDeal run_insert = new DataDeal(sessionId,sno);
-			run_insert.run();
-			response.sendRedirect(request.getContextPath()+WardURL);						
+			request.getSession().setAttribute("deal", run_insert);
+			request.getSession().setAttribute("sno", sno);
+			request.getSession().setAttribute("sessionId", request.getSession().getId());
+			run_insert.run();			
+			response.sendRedirect(request.getContextPath()+Wait);						
 		}else
 			response.sendRedirect(request.getContextPath()+Redirect);
 		return ;
