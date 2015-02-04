@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
     pageEncoding="GB18030"%>
+    <%@ taglib prefix="tag" uri="checkStatus" %><tag:checkStatus/>
     <jsp:useBean id="s" scope="session" class="cn.bsexam.vo.Student"></jsp:useBean>
     <jsp:setProperty property="*" name="s"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -4,6 +4,8 @@
     <jsp:setProperty property="*" name="stu"/>
     <jsp:useBean id="s" scope="session" class="cn.bsexam.vo.Student"></jsp:useBean>
     <jsp:setProperty property="*" name="s"/>
+    <%@ taglib prefix="tag" uri="checkStatus" %>
+	<tag:checkStatus/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
 $(document).ready(function(){
