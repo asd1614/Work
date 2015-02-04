@@ -17,6 +17,7 @@ session.setAttribute("stu", stu);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>百色学院报名系统</title>
+<link rel="shortcut icon" href="http://www.bsuc.cn/favicon.ico">
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
 <link href="../css/student_form.css" rel="stylesheet" type="text/css" />
 <link href="../css/student_tool.css" rel="stylesheet" type="text/css" />
