@@ -142,4 +142,10 @@
     <servlet-name>NewStudentSerlvet</servlet-name>
     <url-pattern>/NewStudentSerlvet</url-pattern>
   </servlet-mapping>
+  <jsp-config>
+	<taglib>
+		<taglib-uri>checkStatus</taglib-uri>
+		<taglib-location>/WEB-INF/checkstatusTag.tld</taglib-location>
+	</taglib>
+  </jsp-config>
 </web-app>

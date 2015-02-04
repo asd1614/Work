@@ -3,6 +3,8 @@
    <%@ page import="cn.bsexam.dao.action.*" %>
    <%@ page import="cn.bsexam.vo.Student" %>
    <%@ page import="cn.bsexam.vo.ShowStu" %>
+   <%@ taglib prefix="tag" uri="checkStatus" %>
+   <tag:checkStatus/>
 <%
 String sno = (String)session.getAttribute("sno");
 Student s = LoginAction.getStudent(sno);

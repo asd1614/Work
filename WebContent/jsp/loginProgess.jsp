@@ -31,7 +31,8 @@ text-align:center
  <% 
 	DataDeal deal = (DataDeal)session.getAttribute("deal");
 	int progress = deal.getProgress(); 
-	if(progress==-1){%>
+	if(progress==-1){
+		session.removeAttribute("sessionId");%>
 	<script type="" LANGUAGE="JavaScript">
       setTimeout("location='../index.html'", 500);
     </script>
@@ -46,7 +47,7 @@ text-align:center
       setTimeout("location='studentMain.jsp'", 500);
     </script>
     <%} %>
-<title>Insert title here</title>
+<title>百色学院报名系统</title>
 </head>
 <body>
 	<table >
