@@ -77,6 +77,10 @@ public class ImageUploadServlet extends HttpServlet {
 				return ;
 			}
 			//以学号命名图片，存放在以系别命名的/images/文件夹下
+			String RealPath = request.getSession().getServletContext().getRealPath("/");
+			File directory = new File(RealPath+"images"+File.separator+stu.getCdepat());
+			if(!directory.exists())
+				directory.mkdir();
 			String filename = File.separator+"images"+File.separator+
 					stu.getCdepat()+File.separator+stu.getSno()+"."+file.getFileExt();
 			file.setFileName(filename);
