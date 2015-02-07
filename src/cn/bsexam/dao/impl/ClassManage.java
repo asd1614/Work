@@ -46,7 +46,7 @@ public class ClassManage implements IClass {
 				e.setClength(re.getInt(3));
 				e.setDno(re.getInt(4));
 				e.setCspecial(re.getString(5));
-				e.setCdepat(re.getString(6));
+				e.setCdepat(String.valueOf(re.getInt(6)));
 				list.add(e);
 			}
 		} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class ClassManage implements IClass {
 			pstat.setInt(3, e.getClength());
 			pstat.setInt(4, e.getDno());
 			pstat.setString(5, e.getCspecial());
-			pstat.setString(6, e.getCdepat());
+			pstat.setInt(6, Integer.parseInt(e.getCdepat()));
 			if(pstat.executeUpdate()==1)
 				flag = true;
 		} catch (SQLException e1) {
@@ -102,7 +102,7 @@ public class ClassManage implements IClass {
 					pstat.setInt(j++, list.get(i).getClength());
 					pstat.setInt(j++, list.get(i).getDno());
 					pstat.setString(j++, list.get(i).getCspecial());
-					pstat.setString(j++, list.get(i).getCdepat());
+					pstat.setInt(j++, Integer.parseInt(list.get(i).getCdepat()));
 					}
 				if(pstat.executeUpdate()==size){
 					flag = true;
@@ -130,7 +130,7 @@ public class ClassManage implements IClass {
 			pstat.setInt(3, e.getClength());
 			pstat.setInt(4,e.getDno());
 			pstat.setString(5, e.getCspecial());
-			pstat.setString(6, e.getCdepat());
+			pstat.setInt(6, Integer.parseInt(e.getCdepat()));
 			pstat.setString(7,cname);
 			if(pstat.executeUpdate()==1)
 				flag = true;
@@ -166,7 +166,7 @@ public class ClassManage implements IClass {
 		List<ClassView> list = new ArrayList<ClassView>();
 		try {
 			pstat = conn.prepareStatement(SQL_VIEW_U);
-			pstat.setString(1, cdepat);
+			pstat.setInt(1, Integer.parseInt(cdepat));
 			re = pstat.executeQuery();
 			while(re.next()){
 				ClassView e = new ClassView();							

@@ -6,7 +6,6 @@ import cn.bsexam.dao.impl.DepatManage;
 import cn.bsexam.dbc.*;
 import java.util.*;
 public class DepartList {
-	private static Map<String,String> map = null;
 	private List<Department> departList = null;
 	public DepartList(){		
 		this.init();
@@ -23,16 +22,22 @@ public class DepartList {
 		return this.departList;
 	}
 	public static Map<String,String> getMap(){
-		if(map!=null)
-			return map;
-		else{
+		DBC dbc = new DatabaseConnectionODBC();
+		Connection conn =null;
+		conn = dbc.getConnection();
+		IDepat dao_d = new DepatManage();
+		dao_d.setConnection(conn);
+		Map<String,String> map = dao_d.viewMap();
+		return map;		
+	}
+	public static boolean insert(String depatname){
+		boolean flag = false;
+		if(depatname!=null){
 			DBC dbc = new DatabaseConnectionODBC();
-			Connection conn =null;
-			conn = dbc.getConnection();
 			IDepat dao_d = new DepatManage();
-			dao_d.setConnection(conn);
-			map = dao_d.viewMap();
-			return map;
-		}		
+			dao_d.setConnection(dbc.getConnection());
+			return dao_d.insertOne(depatname);
+		}
+		return flag;
 	}
 }

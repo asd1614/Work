@@ -52,7 +52,16 @@ public class DataDeal implements Runnable{
 			setProgress(7);	
 			String cname = data.get("行政班级");
 			//设置班级对象的基本信息，在这之前先查询是否有该班级的信息存在，如果存在则不再重新插入
-			String cdepat = dapat.get(data.get("院(系)/部"));		
+			String cdepat = dapat.get(data.get("院(系)/部"));	
+			if(cdepat==null){
+				if(DepartList.insert(data.get("院(系)/部"))){
+					this.dapat = DepartList.getMap();
+					cdepat = dapat.get(data.get("院(系)/部"));	
+				}else{
+					setProgress(-1);
+					return ;
+				}
+			}
 			ClassList dao_c = new ClassList();
 			List<ClassView> c_list = dao_c.getCList(cdepat);
 			boolean flag_c = false;//标识是否已经插入有了该班级

@@ -9,7 +9,7 @@ import cn.bsexam.vo.Department;
 public interface IDepat {	
 	List<Department> viewList();
 	Map<String,String> viewMap();
-	boolean insertOne(Department e);
+	boolean insertOne(String depatname);
 	boolean insertList(List<Department> list);
 	boolean updateOne(Department e,String cdepat);
 	boolean deleteOne(String depatname);

@@ -10,11 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class DepatManage implements IDepat{
 	private String SQL_VIEW = 
-			"SELECT cdepat, depatname FROM department ORDER BY cdepat ASC;";
+			"SELECT cdepat, depatname FROM department ORDER BY depatname ASC;";
 	private String SQL_INSERT =
-			"INSERT INTO department (cdepat,depatname) VALUES (?,?);";
-	private String SQL_INSERT_L =
-			"INSERT INTO department (cdepat,depatname) VALUES (?,?) ";
+			"INSERT INTO department (depatname) VALUES (?);";
 	private String SQL_UPDATE = 
 			"UPDATE department set cdepat = ?, depatname = ? WHERE cdepat = ? ;";
 	private String SQL_DELETE = 
@@ -33,6 +31,7 @@ public class DepatManage implements IDepat{
 			re = pstat.executeQuery();
 			while(re.next()){
 				Department depat = new Department();
+				String cdepat = String.valueOf(re.getInt(1));
 				depat.setCdepat(re.getString(1));
 				depat.setDepatname(re.getString(2));
 				list.add(depat);
@@ -52,7 +51,7 @@ public class DepatManage implements IDepat{
 			pstat = conn.prepareStatement(SQL_VIEW);
 			re = pstat.executeQuery();
 			while(re.next()){
-				String cdepat = re.getString(1);
+				String cdepat = String.valueOf(re.getInt(1));
 				String depatname = re.getString(2);
 				map.put(depatname, cdepat);
 			}
@@ -63,18 +62,17 @@ public class DepatManage implements IDepat{
 		
 		return map;	
 	}
-	public boolean insertOne(Department e) {
+	public boolean insertOne(String depatname) {
 		// TODO 自动生成的方法存根
 		
 		PreparedStatement pstat;
 		ResultSet re;
 		boolean flag = false;
-		if(e==null)
+		if(depatname==null)
 			return flag;
 		try {
 			pstat = conn.prepareStatement(SQL_INSERT);
-			pstat.setString(1, e.getCdepat());
-			pstat.setString(2, e.getDepatname());
+			pstat.setString(1, depatname);
 			if(pstat.executeUpdate()==1)
 				flag = true;
 		} catch (SQLException e1) {
@@ -86,31 +84,7 @@ public class DepatManage implements IDepat{
 
 	public boolean insertList(List<Department> list) {
 		// TODO 自动生成的方法存根
-		String SQL_INSERT_L = this.SQL_INSERT_L;
-		String aft =",(?,?)";
-		int size = list.size();	
-		for(int i=1;i<size;i++){
-			SQL_INSERT_L = SQL_INSERT_L + aft;
-		}
-		SQL_INSERT_L = SQL_INSERT_L+ ";";
-		PreparedStatement pstat ;
-		boolean flag = false;
-		try {
-			pstat = conn.prepareStatement(SQL_INSERT_L);
-			if(!list.isEmpty()){
-				for(int i=0,j=1;i<size;i++){				
-					pstat.setString(j++, list.get(i).getCdepat());
-					pstat.setString(j++, list.get(i).getDepatname());
-					}
-				if(pstat.executeUpdate()==size){
-					flag = true;
-				}
-			} 
-		}catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-			}		
-		return flag;
+		return false;
 	}
 
 	public boolean updateOne(Department e,String cdepat) {
@@ -123,9 +97,9 @@ public class DepatManage implements IDepat{
 			return flag;
 		try {
 			pstat = conn.prepareStatement(SQL_UPDATE);
-			pstat.setString(1, e.getCdepat());
+			pstat.setInt(1, Integer.parseInt(e.getCdepat()));
 			pstat.setString(2, e.getDepatname());
-			pstat.setString(3, cdepat);
+			pstat.setInt(3, Integer.parseInt(cdepat));
 			if(pstat.executeUpdate()==1)
 				flag = true;
 		} catch (SQLException e1) {
