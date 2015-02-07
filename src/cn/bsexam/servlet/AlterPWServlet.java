@@ -9,9 +9,10 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.bsexam.dao.action.PwManage;
+import cn.bsexam.dao.action.PWAction;
 import cn.bsexam.vo.SUser;
 import cn.bsexam.vo.ShowStu;
+import cn.bsexam.vo.SysUser;
 
 /**
  * Servlet implementation class AlterPWServlet
@@ -43,19 +44,20 @@ public class AlterPWServlet extends HttpServlet {
 		String confirm = request.getParameter("confirm");
 		if(new_pass.equals(confirm)){
 			HttpSession session = request.getSession();
-			ShowStu stu = (ShowStu)session.getAttribute("stu");
-			SUser su = new SUser();
-			su.setSno(stu.getSno());
-			su.setPassword(pre);
-			PwManage dao_pw = new PwManage(su);
-			if(dao_pw.isTrue()){
-				su.setPassword(new_pass);
-				dao_pw.alterPW(su);
-				response.setContentType("text/html;charset=GB18030");
-				PrintWriter out = response.getWriter();
-				out.print("修改成功");
-				out.close();
-				return ;
+			String suser = (String)session.getAttribute("admin");
+			SysUser u = new SysUser();
+			u.setSuser(suser);
+			u.setPassword(pre);
+			if(PWAction.check(u)){
+				u.setPassword(new_pass);
+				if(PWAction.alter(u)){
+					response.setContentType("text/html;charset=GB18030");
+					PrintWriter out = response.getWriter();
+					out.print("修改成功");
+					out.close();
+					return ;
+				}
+
 			}
 		}
 		response.setContentType("text/html;charset=GB18030");

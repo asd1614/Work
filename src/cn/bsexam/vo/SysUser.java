@@ -1,15 +1,15 @@
 package cn.bsexam.vo;
 public class SysUser{
-	private String user;
+	private String suser;
 	private String password;
-	public void setUser(String user){
-		this.user = user.trim();
+	public void setSuser(String suser){
+		this.suser = suser.trim();
 	}
 	public void setPassword(String password){
 		this.password = password.trim();
 	}
-	public String getUser(){
-		return this.user;
+	public String getSuser(){
+		return this.suser;
 	}
 	public String getPassword(){
 		return this.password;

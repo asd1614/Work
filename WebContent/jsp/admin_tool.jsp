@@ -22,7 +22,7 @@ $(document).ready(function(){
 		$('#content_right').load('');
 	});
 	$('a#mm_alter').click(function(){
-		$('#content_right').load('');
+		$('#content_right').load('adminAlter.jsp');
 	});
 	
 });
@@ -30,11 +30,11 @@ $(document).ready(function(){
 <div class="left_Tool">
 	<div class="menu">
 		<ul>
-			<li><a href="#" id="link1"><span>系统管理</span></a>
+			<li><a href="#" id="link1"><span>信息管理</span></a>
 				<ul id="uL1">
-					<li><a href="#" id="alter"><span>管理</span></a></li>
-					<li><a href="#" id="system_open"><span>报名时间设定</span></a></li>
+					<li><a href="#" id="system_open"><span>报名时间设定</span></a></li>						
 					<li><a href="#" id="exam_alter"><span>考试信息管理</span></a></li>
+					<li><a href="#" id="alter"><span>系部信息管理</span></a></li>
 				</ul></li>
 			<li><a href="#" id="link2"><span>报表导出</span></a>
 				<ul id="uL2">
