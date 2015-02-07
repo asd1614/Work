@@ -9,7 +9,7 @@ import cn.bsexam.dao.interf.ISysUser;
 import cn.bsexam.vo.SysUser;
 
 public class SysUserManage implements ISysUser {
-	private String VIEW = "SELECT suser FORM sysuser WHERE suser = ? and password = ? ;";
+	private String VIEW = "select * from sysuser where suser = ? and password = ?;";
 	private String UPDATE = "UPDATE sysuser set password = ? WHERE suser = ? ;";
 	private Connection conn ;
 	public void setConnection(Connection conn){

@@ -96,7 +96,7 @@
 	}
 	function changeValidateCode(Obj) {
 		var dt = new Date();
-		Obj.src = "ValidateCode?t=" + dt.getMilliseconds();
+		Obj.src = Obj.src+"?t=" + dt.getMilliseconds();
 	}
 	function chkpwd(obj) {
 		if (obj.value != '') {
@@ -119,6 +119,18 @@
 			document.all.fgfggfdgtyuuyyuuckjg.value = obj.value.toUpperCase();
 		}
 	}
+	function changeToS(){
+		var form = document.getElementsByTagName("form")[0];
+		form.action = "NewStudentSerlvet";
+		var img = document.getElementById("img_test");
+		img.src = "ValidateCode";
+	}
+	function changeToA(){
+		var form = document.getElementsByTagName("form")[0];
+		form.action = "adminServlet";
+		var img = document.getElementById("img_test");
+		img.src = "AuthCodeServlet";
+	}
 //-->
 </script>
 </head>
@@ -139,9 +151,9 @@
                 	<input id="pcInfo" type="hidden" name="pcInfo">
 					<input type="hidden" id="dsdsdsdsdxcxdfgfg" name="dsdsdsdsdxcxdfgfg">
 					<input type="hidden" id="fgfggfdgtyuuyyuuckjg"	name="fgfggfdgtyuuyyuuckjg">
-					<input id="stu" type="radio" name="type" checked="checked"/>
+					<input id="stu" type="radio" name="type" checked="checked" onclick="changeToS()"/>
             		<label for="stu" class="type_label">学生</label> 
-            		<input id="admin" type="radio" name="type"  />
+            		<input id="admin" type="radio" name="type" onclick="changeToA()"/>
             		<label for="admin" class="type_label">管理员</label> <br/>
                 	<label class="name">用户账号</label>
                 	<input name="txt_asmcdefsddsd" id="txt_asmcdefsddsd" type="text" class="name" /><br/>

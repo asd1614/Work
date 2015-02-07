@@ -27,8 +27,6 @@ public class LoginOutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("stu");
-		session.removeAttribute("s");
 		session.invalidate();
 		response.sendRedirect(request.getContextPath()+Redirect);
 	}
