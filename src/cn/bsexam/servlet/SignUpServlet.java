@@ -15,7 +15,7 @@ import cn.bsexam.dao.action.ExamAction;
 import cn.bsexam.vo.ExamType;
 import cn.bsexam.vo.SE;
 import cn.bsexam.vo.Student;
-
+import java.sql.Timestamp;
 /**
  * Servlet implementation class ExamServlet
  */
@@ -63,7 +63,18 @@ public class SignUpServlet extends HttpServlet {
 		}
 		//获取考试类型的具体时间
 		List<ExamType> list = (List<ExamType>)super.getServletContext().getAttribute("list_ex");
-		String edate = list.get(0).getEdate().toString().substring(0,10);
+		ListIterator<ExamType> iterator_e = list.listIterator();
+		Timestamp time =null;
+		String edate = null;
+		while(iterator_e.hasNext()){
+			ExamType exam = iterator_e.next();
+			if(exam.getEno().equals(eno)){
+				 time = exam.getEdate();
+				 edate = time.toString().substring(0,10);
+				 break;
+			}
+		}
+		
 		//查询该用户是否已经报名
 		ExamAction dao_ex = new ExamAction();
 		SE se = dao_ex.getSE(s.getSno(), edate);
@@ -71,6 +82,7 @@ public class SignUpServlet extends HttpServlet {
 			se.setSno(s.getSno());
 			se.setEno(eno);
 			se.setEdate(edate);
+			se.setTime(time);
 			if(dao_ex.insertSE(se)){
 				out.println("报名成功");
 			}

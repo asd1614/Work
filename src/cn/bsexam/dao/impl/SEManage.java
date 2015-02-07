@@ -14,7 +14,7 @@ public class SEManage implements ISE{
 	private String SQL_VIEW = 
 			"SELECT sno,eno,edate,egrade FROM se WHERE sno= ? and edate =?;";
 	private String SQL_INSERT =
-			"INSERT INTO se (sno,eno,edate) VALUES (?,?,?);";
+			"INSERT INTO se (sno,eno,edate,etime) VALUES (?,?,?,?);";
 	private String SQL_UPDATE = 
 			"UPDATE se set eno=? WHERE sno = ? and edate =?;";
 	private String SQL_DELETE = 
@@ -82,6 +82,7 @@ public class SEManage implements ISE{
 			pstat.setString(1, e.getSno());
 			pstat.setString(2, e.getEno());
 			pstat.setString(3, e.getEdate());
+			pstat.setTimestamp(4,e.getTime());
 			if(pstat.executeUpdate()==1)
 				flag = true;
 		} catch (SQLException e1) {

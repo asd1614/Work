@@ -56,7 +56,7 @@ text-align:center
 			<% for(int i =1 ;i<=progress;i++){	%>
 				<td class="progress" >&nbsp;</td>
 			<% } %>
-			<% for(int j =4 ;j>progress;j--){	%>
+			<% for(int j =10 ;j>progress;j--){	%>
 				<td  >&nbsp;</td>
 			<% } %>
 		</tr>
