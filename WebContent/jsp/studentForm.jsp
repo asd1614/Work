@@ -12,7 +12,7 @@
 		$('select#xib').load('../QueryList',		
 		function(){
 			var dname = $('select#xib').val();
-			if(danem=='NULL')
+			if(dname=='NULL')
 				$('tr#class').hide();
 		});
 		function refresh_class(dname){
