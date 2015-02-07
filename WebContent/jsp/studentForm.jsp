@@ -14,6 +14,10 @@
 			var dname = $('select#xib').val();
 			if(dname=='NULL')
 				$('tr#class').hide();
+			else{
+				var d = $('#xib').val();
+				refresh_class(d);
+			}
 		});
 		function refresh_class(dname){
 			$.post(
@@ -24,10 +28,10 @@
 					function(data){$('select#cname').html(data);}
 					);
 		}
-		$('div.view').one('mouseenter',function(){
+		/*$('div.view').one('mouseenter',function(){
 			var d = $('#xib').val();
 			refresh_class(d);
-		});
+		});*/
 		$('select#xib').change(
 			function(){
 				var d = $('#xib').val();
