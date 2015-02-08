@@ -34,6 +34,7 @@ $(document).ready(function(){
 				<ul id="uL1">
 					<li><a href="#" id="system_open"><span>报名时间设定</span></a></li>						
 					<li><a href="#" id="exam_alter"><span>考试信息管理</span></a></li>
+					<li><a href="#" id="alter"><span>系部信息管理</span></a></li>
 				</ul></li>
 			<li><a href="#" id="link2"><span>报表导出</span></a>
 				<ul id="uL2">
